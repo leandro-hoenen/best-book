@@ -1,7 +1,11 @@
 User Stories
 
 Seller Actions
-
+  As a {User}, I want to create an account so that I can access the Website. 
+  As a {User}, I want to log-in to the website in order to create a listing of a used book. 
+  As a {User}, I want to see the current and past listings. 
+  As a {User}, I want to edit my profile information. 
+  As a {User}, I want to see how many users viewed my current listings. 
 
 Buyer Actions
 
