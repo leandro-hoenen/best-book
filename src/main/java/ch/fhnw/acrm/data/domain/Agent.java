@@ -32,7 +32,7 @@ public class Agent {
 	private String remember;
 	@OneToMany(mappedBy = "agent")
 	@JsonIgnore
-	private List<Customer> customers;
+	private List<Book> books;
 
 	public Long getId() {
 		return id;
@@ -68,12 +68,12 @@ public class Agent {
 		this.password = password;
 	}
 
-	public List<Customer> getCustomers() {
-		return customers;
+	public List<Book> getCustomers() {
+		return books;
 	}
 
-	public void setCustomers(List<Customer> customers) {
-		this.customers = customers;
+	public void setCustomers(List<Book> customers) {
+		this.books = customers;
 	}
 
 	public String getRemember() {

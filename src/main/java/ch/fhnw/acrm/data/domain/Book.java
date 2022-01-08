@@ -1,8 +1,11 @@
 package ch.fhnw.acrm.data.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
@@ -19,6 +22,9 @@ public class Book {
     @NotEmpty(message = "Please provide an author.")
     private String author;
     private String description;
+    @ManyToOne
+    @JsonIgnore
+    private Agent agent;
 
     public Long getId() {return id;}
 
