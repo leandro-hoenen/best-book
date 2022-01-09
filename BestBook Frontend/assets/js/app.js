@@ -123,10 +123,6 @@ document.querySelector("#book-form").addEventListener("submit", (e) => {
 
     reader.readAsDataURL(this.files[0]);
   });
-  // let formData = new FormData();
-
-   // formData.append("photo", photo);
-  // display image
   
 
   // Validate
@@ -159,5 +155,5 @@ document.querySelector("#book-list").addEventListener("click", (e) => {
   Store.removeBook(e.target.parentElement.previousElementSibling.textContent);
 
   // Show success message
-  UI.showAlert("Book Removed", "success");
+  alert("Book Removed", "success");
 });
