@@ -1,20 +1,20 @@
 debugger;
 //Get data
-const nameInput = document.getElementById("userName").value;
-const email = document.getElementById("userEmail").value;
-const password = document.getElementById("userPassword").value;
-const errorNodes = document.getElementsByClassName("error");
+let nameInput;
+let email;
+let password;
+let errorNodes;
 
 //Data for server
-const user = {
-    "nameInput": nameInput,
-    "email": email,
-    "password": password
+let user = {
+    "nameInput": "",
+    "email": "",
+    "password": "",
 };
 
-const userJson = JSON.stringify(user);
+//const userJson = JSON.stringify(user);
 
-console.log(userJson);
+//console.log(userJson);
 
 function register(){
     nameInput = document.getElementById("userName").value;
@@ -22,11 +22,9 @@ function register(){
     password = document.getElementById("userPassword").value;
     errorNodes = document.getElementsByClassName("error");
 
-    const user = {
-        "nameInput": nameInput,
-        "email": email,
-        "password": password
-    };
+    user.nameInput = nameInput;
+    user.email = email;
+    user.password = password;
 
     const userJson = JSON.stringify(user);
 

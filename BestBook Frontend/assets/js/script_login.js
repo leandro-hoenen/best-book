@@ -1,3 +1,6 @@
+//Get data from server
+
+
 //Get data
 const email = document.getElementById("userEmail");
 const password = document.getElementById("userPassword");
