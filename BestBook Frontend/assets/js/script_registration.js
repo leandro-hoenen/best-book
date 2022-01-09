@@ -1,18 +1,10 @@
-debugger;
 //Get data
-let nameInput;
-let email;
-let password;
-let errorNodes;
+var nameInput = "";
+let email ="";
+let password ="";
+let errorNodes ="";
 
-//Data for server
-let user = {
-    "nameInput": "",
-    "email": "",
-    "password": "",
-};
-
-//const userJson = JSON.stringify(user);
+document.getElementById("signupButton").addEventListener("click", register());
 
 //console.log(userJson);
 
@@ -22,9 +14,11 @@ function register(){
     password = document.getElementById("userPassword").value;
     errorNodes = document.getElementsByClassName("error");
 
-    user.nameInput = nameInput;
-    user.email = email;
-    user.password = password;
+    let user = {
+    "nameInput": nameInput,
+    "email": email,
+    "password": password,
+};
 
     const userJson = JSON.stringify(user);
 
