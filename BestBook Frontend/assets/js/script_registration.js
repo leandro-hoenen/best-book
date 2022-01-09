@@ -1,14 +1,13 @@
 //Get data
-var nameInput = "";
+let nameInput = "";
 let email ="";
 let password ="";
 let errorNodes ="";
 
-document.getElementById("signupButton").addEventListener("click", register());
+//document.getElementById("signupButton").addEventListener("click", fuction(){register(nameInput, email, password, errorNodes)});
+document.getElementById("signupButton").addEventListener("click", function(){ register(nameInput, email, password, errorNodes); });
 
-//console.log(userJson);
-
-function register(){
+function register(nameInput, email, password, errorNodes){
     nameInput = document.getElementById("userName").value;
     email = document.getElementById("userEmail").value;
     password = document.getElementById("userPassword").value;
@@ -18,15 +17,19 @@ function register(){
     "nameInput": nameInput,
     "email": email,
     "password": password,
-};
+    };
 
     const userJson = JSON.stringify(user);
 
     console.log(userJson);
+    validateForm(nameInput, email, password, errorNodes);
+    clearMessages(email, password, errorNodes);
+    emailIsValid(email);
+
 }
 
 //Validate data
-function validateForm(){
+function validateForm(nameInput, email, password, errorNodes){
 
     clearMessages();
     let errorFlag = false;
@@ -55,7 +58,7 @@ function validateForm(){
 }
 
 // Clear error / success messages
-function clearMessages(){
+function clearMessages(email, password, errorNodes){
     for(let i = 0; i < errorNodes.length; i++){
         errorNodes[i].innerText = "";
     }
