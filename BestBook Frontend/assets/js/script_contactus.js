@@ -1,4 +1,3 @@
-
 //Get data
 const nameInput1 = document.getElementById("name");
 const email = document.getElementById("email");
@@ -21,7 +20,7 @@ function validateForm(){
     }
 
     if(subject.value.length < 1){
-        errorNodes[1].innerText = "Please enter a subject of your concer";
+        errorNodes[1].innerText = "Please enter a subject of your concern";
         subject.classList.add("error-border");
         errorFlag = true;
     }

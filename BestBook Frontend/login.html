@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
     <link rel="stylesheet" href="assets/css/vanilla-zoom.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
@@ -33,14 +34,21 @@
             <div class="container">
                 <div class="block-heading">
                     <h2 class="text-info">Log In</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
                 </div>
-                <form>
-                    <div class="mb-3"><label class="form-label" for="email">Email</label><input class="form-control item" type="email" id="email"></div>
-                    <div class="mb-3"><label class="form-label" for="password">Password</label><input class="form-control" type="password" id="password"></div>
-                    <div class="mb-3">
+                <form onsubmit="event.preventDefault(); validateForm()">
+                    <div class="mb-3"><label class="form-label" for="email">Email</label><input class="form-control item" type="email" id="userEmail" placeholder="hi@example.com"><p class="error"></p></div>
+
+                    <div class="mb-3"><label class="form-label" for="password">Password</label><input class="form-control" type="password" id="userPassword" placeholder="&bull;&bull;&bull;&bull;"><p class="error"></p></div>
+                    <!--<div class="mb-3">
                         <div class="form-check"><input class="form-check-input" type="checkbox" id="checkbox"><label class="form-check-label" for="checkbox">Remember me</label></div>
-                    </div><button class="btn btn-primary" type="submit">Log In</button>
+                    </div>-->
+
+                    <p><a href="registration.html">Creat an account</a></p>
+
+                    <div class="mb-3">
+                    <button class="btn btn-primary" type="submit" value="log in">Log In</button><p id="success"></p>
+
+                    </div>
                 </form>
             </div>
         </section>
@@ -79,6 +87,7 @@
             <p>© 2021 Copyright Text</p>
         </div>
     </footer>
+    <script src="assets/js/script_login.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
     <script src="assets/js/vanilla-zoom.js"></script>
