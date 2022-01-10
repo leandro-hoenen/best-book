@@ -1,11 +1,11 @@
-# A-CRM Web App
+# best-book web app
 
-This is a minimal CRM Web App (A-CRM - Insurance Agency CRM) as a template for students. 
+This is a minimal online shop app for used books
 
 [![License](https://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 [![Deploy to Heroku](https://img.shields.io/badge/deploy%20to-Heroku-6762a6.svg?longCache=true)](https://heroku.com/deploy)
 
-> 🚧 **This is a template project**: Make sure that you adapt this documentation and the source code in this project according to your needs and use case.
+> 🚧 **This project is based on the template of Dr. Andreas Martin of FHNW**: The template is adapted to the online-book-shop use case.
 
 #### Contents:
 - [Analysis](#analysis)
@@ -30,16 +30,17 @@ This is a minimal CRM Web App (A-CRM - Insurance Agency CRM) as a template for s
 
 ### Scenario
 
-A-CRM (Agency Customer-Relationship-Management) is the smallest possible and lightweight demonstration tool that allows agents to manage their customer data. Agents have an own access to their customer data.
+best-book (online shop for used books) is the smallest possible and lightweight demonstration tool that allows customers to manage their selling-book data. Customers have private access to their selling-book data.
 
 ### User Stories
-1.	As an insurance agent, I want to have a Web app so that I can use it on different mobile devices and on desktop computers.
-2.	As an insurance agent, I want to see a consistent visual appearance so that I can navigate easily, and it looks consistent.
-3.	As an insurance agent, I want to use list views so that I can explore and read my business data.
-4.	As an insurance agent, I want to use edit and create views so that I can maintain my business data.
-5.	As an insurance agent, I want to create an account so that I can get access to the Web app.
-6.	As an insurance agent, I want to log-in so that I can authenticate myself.
-7.	As an insurance agent, I want to edit my profile so that my data is stored securely.
+1. As customer of best-book, I want to have a Web app so that I can use it on different mobile devices and on desktop computers.
+2. As a customer of best-book, I want to see a consistent visual appearance so that I can navigate easily, and it looks consistent.
+3. As a customer of best-book, I want to use list views so that I can explore and read my business data.
+4. As a customer of best-book, I want to use edit and create views so that I can maintain my business data.
+5. As a customer of best-book, I want to create an account so that I can get access to the Web app.
+6. As a customer of best-book, I want to log-in so that I can authenticate myself.
+7. As a customer of best-book, I want to edit my profile so that my data is stored securely.
+8. As a customer of best-book, I want to see all books available in the store
 
 ### Use Case
 ![](images/use-case.png)
