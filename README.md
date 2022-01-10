@@ -39,16 +39,19 @@ best-book (online shop for used books) is the smallest possible and lightweight 
 4. As a customer of best-book, I want to use edit and create views so that I can maintain my business data.
 5. As a customer of best-book, I want to create an account so that I can get access to the Web app.
 6. As a customer of best-book, I want to log-in so that I can authenticate myself.
-7. As a customer of best-book, I want to edit my profile so that my data is stored securely.
+7. (As a customer of best-book, I want to edit my profile so that my data is stored securely.)
 8. As a customer of best-book, I want to see all books available in the store
 
 ### Use Case
-![](images/use-case.png)
+![](images/best book usecases.png)
 
-- UC-1 [Login on A-CRM]: Agents can log-in by entering an email address and password. As an extension, new agents my register first.
-- UC-2 [Register on A-CRM]: Agents can register to get an account (profile) to access the A-CRM system.
-- UC-3 [Edit a customer]: Agents can create, update and delete customers.
-- UC-4 [Show a customer list]: Agents can get an overview over their customers based on a customer list. As an extension they can create, update and delete customers (UC-3).
+- UC-1 [Login on best-book]: Agents can log-in by entering an email address and password. As an extension, new agents my register first.
+- UC-2 [Register on best-book]: Agents can register to get an account (profile) to access the A-CRM system.
+- UC-3 [Create a book]: Customers can create new books.
+- UC-4 [Edit a book]: Customers can edit existing books.
+- UC-5 [Delete a book]: Customers can delete existing books.
+- UC-6 [Show book list]: Customers can get an overview over their books based on a book list. As an extension they can create, update and delete customers (UC-3, UC-4, UC-5).
+- UC-7 [Show all available books in store]: Customers can access all available books in the online book store.
 
 ## Design
 
