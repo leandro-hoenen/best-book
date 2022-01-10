@@ -1,11 +1,11 @@
-# best-book web app
+# A-CRM Web App
 
-This is a minimal online shop app for used books
+This is a minimal CRM Web App (A-CRM - Insurance Agency CRM) as a template for students. 
 
 [![License](https://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 [![Deploy to Heroku](https://img.shields.io/badge/deploy%20to-Heroku-6762a6.svg?longCache=true)](https://heroku.com/deploy)
 
-> 🚧 **This project is based on the template of Dr. Andreas Martin of FHNW**: The template is adapted to the online-book-shop use case.
+> 🚧 **This is a template project**: Make sure that you adapt this documentation and the source code in this project according to your needs and use case.
 
 #### Contents:
 - [Analysis](#analysis)
@@ -30,28 +30,24 @@ This is a minimal online shop app for used books
 
 ### Scenario
 
-best-book (online shop for used books) is the smallest possible and lightweight demonstration tool that allows customers to manage their selling-book data. Customers have private access to their selling-book data.
+A-CRM (Agency Customer-Relationship-Management) is the smallest possible and lightweight demonstration tool that allows agents to manage their customer data. Agents have an own access to their customer data.
 
 ### User Stories
-1. As customer of best-book, I want to have a Web app so that I can use it on different mobile devices and on desktop computers.
-2. As a customer of best-book, I want to see a consistent visual appearance so that I can navigate easily, and it looks consistent.
-3. As a customer of best-book, I want to use list views so that I can explore and read my business data.
-4. As a customer of best-book, I want to use edit and create views so that I can maintain my business data.
-5. As a customer of best-book, I want to create an account so that I can get access to the Web app.
-6. As a customer of best-book, I want to log-in so that I can authenticate myself.
-7. (As a customer of best-book, I want to edit my profile so that my data is stored securely.)
-8. As a customer of best-book, I want to see all books available in the store
+1.	As an insurance agent, I want to have a Web app so that I can use it on different mobile devices and on desktop computers.
+2.	As an insurance agent, I want to see a consistent visual appearance so that I can navigate easily, and it looks consistent.
+3.	As an insurance agent, I want to use list views so that I can explore and read my business data.
+4.	As an insurance agent, I want to use edit and create views so that I can maintain my business data.
+5.	As an insurance agent, I want to create an account so that I can get access to the Web app.
+6.	As an insurance agent, I want to log-in so that I can authenticate myself.
+7.	As an insurance agent, I want to edit my profile so that my data is stored securely.
 
 ### Use Case
-![](images/best book usecases.png)
+![](images/use-case.png)
 
-- UC-1 [Login on best-book]: Agents can log-in by entering an email address and password. As an extension, new agents my register first.
-- UC-2 [Register on best-book]: Agents can register to get an account (profile) to access the A-CRM system.
-- UC-3 [Create a book]: Customers can create new books.
-- UC-4 [Edit a book]: Customers can edit existing books.
-- UC-5 [Delete a book]: Customers can delete existing books.
-- UC-6 [Show book list]: Customers can get an overview over their books based on a book list. As an extension they can create, update and delete customers (UC-3, UC-4, UC-5).
-- UC-7 [Show all available books in store]: Customers can access all available books in the online book store.
+- UC-1 [Login on A-CRM]: Agents can log-in by entering an email address and password. As an extension, new agents my register first.
+- UC-2 [Register on A-CRM]: Agents can register to get an account (profile) to access the A-CRM system.
+- UC-3 [Edit a customer]: Agents can create, update and delete customers.
+- UC-4 [Show a customer list]: Agents can get an overview over their customers based on a customer list. As an extension they can create, update and delete customers (UC-3).
 
 ## Design
 
