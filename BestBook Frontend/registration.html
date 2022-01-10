@@ -10,11 +10,12 @@
     <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
     <link rel="stylesheet" href="assets/css/vanilla-zoom.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
     <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-        <div class="container"><a class="navbar-brand logo" href="#">bestbooks.ch</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand logo" href="index.html">bestbooks.ch</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
@@ -33,12 +34,16 @@
             <div class="container">
                 <div class="block-heading">
                     <h2 class="text-info">Registration</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
                 </div>
-                <form>
-                    <div class="mb-3"><label class="form-label" for="name">Name</label><input class="form-control item" type="text" id="name"></div>
-                    <div class="mb-3"><label class="form-label" for="password">Password</label><input class="form-control item" type="password" id="password"></div>
-                    <div class="mb-3"><label class="form-label" for="email">Email</label><input class="form-control item" type="email" id="email"></div><button class="btn btn-primary" type="submit">Sign Up</button>
+                <form onsubmit="event.preventDefault(); validateForm()">
+                    <div class="mb-3"><label class="form-label" for="name">Name</label><input class="form-control item" type="text" id="userName" placeholder="Your name"><p class="error"></p></div>
+
+                    <div class="mb-3"><label class="form-label" for="password">Password</label><input class="form-control item" type="password" id="userPassword" placeholder="&bull;&bull;&bull;&bull;"><p class="error"></p></div>
+
+                    <div class="mb-3"><label class="form-label" for="email">Email</label><input class="form-control item" type="email" id="userEmail" placeholder="hi@example.com"><p class="error"></p></div>
+                    
+                    <button class="btn btn-primary" type="submit" id="signupButton">Sign Up</button><p id="success"></p>
+                    
                 </form>
             </div>
         </section>
@@ -57,7 +62,7 @@
                     <h5>About us</h5>
                     <ul>
                         <li><a href="about-us.html">About us</a></li>
-                        <li><a href="mailto:adina.baechli@students.fhnw.ch">Contact us</a></li>
+                        <li><a href="contact-us.html">Contact us</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-3">
@@ -77,6 +82,7 @@
             <p>© 2021 Copyright Text</p>
         </div>
     </footer>
+    <script src="assets/js/script_registration.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
     <script src="assets/js/vanilla-zoom.js"></script>
