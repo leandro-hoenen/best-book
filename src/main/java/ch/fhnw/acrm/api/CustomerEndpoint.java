@@ -5,6 +5,8 @@
 
 package ch.fhnw.acrm.api;
 
+import ch.fhnw.acrm.business.service.BookService;
+import ch.fhnw.acrm.data.domain.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +25,8 @@ import java.util.List;
 public class CustomerEndpoint {
     @Autowired
     private CustomerService customerService;
+    @Autowired
+    private BookService bookService;
 
     @PostMapping(path = "/customer", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Customer> postCustomer(@RequestBody Customer customer) {
@@ -41,9 +45,31 @@ public class CustomerEndpoint {
         return ResponseEntity.created(location).body(customer);
     }
 
+    @PostMapping(path = "/book", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<Book> postBook(@RequestBody Book book) {
+        try {
+            book = bookService.enterBusinessBook(book);
+        } catch (ConstraintViolationException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, e.getConstraintViolations().iterator().next().getMessage());
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage());
+        }
+
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest().path("/{bookId}")
+                .buildAndExpand(book.getId()).toUri();
+
+        return ResponseEntity.created(location).body(book);
+    }
+
     @GetMapping(path = "/customer", produces = "application/json")
     public List<Customer> getCustomers() {
         return customerService.findAllCustomers();
+    }
+
+    @GetMapping(path = "/book", produces = "application/json")
+    public List<Book> getBook(){
+        return bookService.myBooks();
     }
 
     @GetMapping(path = "/customer/{customerId}", produces = "application/json")
