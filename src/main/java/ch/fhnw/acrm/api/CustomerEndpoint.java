@@ -45,6 +45,7 @@ public class CustomerEndpoint {
         return ResponseEntity.created(location).body(customer);
     }
 
+    //added for books
     @PostMapping(path = "/book", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Book> postBook(@RequestBody Book book) {
         try {
@@ -67,6 +68,7 @@ public class CustomerEndpoint {
         return customerService.findAllCustomers();
     }
 
+    //added for books
     @GetMapping(path = "/book", produces = "application/json")
     public List<Book> getBook(){
         return bookService.myBooks();

@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -34,18 +33,6 @@ public class Agent {
 	@OneToMany(mappedBy = "agent")
 	@JsonIgnore
 	private List<Customer> customers;
-
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name = "agent_id")
-	private List<Book> books = new ArrayList<>();
-
-	public List<Book> getBooks() {
-		return books;
-	}
-
-	public void setBooks(List<Book> books) {
-		this.books = books;
-	}
 
 	public Long getId() {
 		return id;
