@@ -16,6 +16,9 @@
 *.iml
 *.ipr
 
+### Added ###
+.idea.misc
+
 ### NetBeans ###
 /nbproject/private/
 /build/
