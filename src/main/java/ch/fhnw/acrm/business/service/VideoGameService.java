@@ -20,5 +20,9 @@ public class VideoGameService {
         return videoGameRepository.findAll();
     }
 
-    // TODO: implement delete and edit videoGame
+    public void deleteVideoGame(Long videoGameId) {
+        videoGameRepository.deleteById(videoGameId);
+    }
+
+    // TODO: implement edit videoGame
 }
