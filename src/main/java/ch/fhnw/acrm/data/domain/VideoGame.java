@@ -21,7 +21,7 @@ public class VideoGame {
     private Boolean localMultiplayer;
     @Column(name = "played", nullable = false)
     private Boolean played = false;
-    @ManyToOne(cascade = {CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.DETACH}, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "agent_id", nullable = false)
     private Agent agent;
 

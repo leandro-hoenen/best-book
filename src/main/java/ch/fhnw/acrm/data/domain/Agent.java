@@ -37,7 +37,6 @@ public class Agent {
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "agent_id")
 	private List<Book> books = new ArrayList<>();
-
 	@OneToMany(mappedBy = "agent", cascade = {CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.DETACH}, orphanRemoval = true)
 	private List<VideoGame> videoGames = new ArrayList<>();
 
