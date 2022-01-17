@@ -1,0 +1,23 @@
+.error {
+  color: red;
+}
+
+.error-border {
+  border.bottom: 1px solid red;
+}
+
+#success {
+  color: #28a745;
+  
+#display_image {
+  width: 375px;
+  height: 211px;
+  border: 1px solid black;
+  background-position: center;
+  background-size: cover;
+}
+
+#myBooksTextField {
+  width: 70%;
+  height: 10px;
+}
