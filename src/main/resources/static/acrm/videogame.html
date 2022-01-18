@@ -87,16 +87,33 @@
                 getVideoGames(function (result) {
                     $("#tableData").empty();
                     $.each(result, function (i, item) {
+                        if (item.onlineMultiplayer === true) {
+                            item.onlineMultiplayer = "Yes";
+                        } else {
+                            item.onlineMultiplayer = "No";
+                        }
+
+                        if (item.localMultiplayer === true) {
+                            item.localMultiplayer = "Yes";
+                        } else {
+                            item.localMultiplayer = "No"
+                        }
+
+                        if (item.played === true) {
+                            item.played = "Done"
+                        } else {
+                            item.played = "Not Done"
+                        }
                         $("#tableData").append(
                             $("<tr>").append(
-                                $("<td>").text(item.id),
-                                $("<td>").text(item.name),
-                                $("<td>").text(item.developer),
-                                $("<td>").text(item.publisher),
-                                $("<td>").text(item.onlineMultiplayer),
-                                $("<td>").text(item.localMultiplayer),
-                                $("<td>").text(item.played),
-                                $("<td>").html(
+                                $("<td id=\"id\">").text(item.id),
+                                $("<td id=\"title\">").text(item.name),
+                                $("<td id=\"developer\">").text(item.developer),
+                                $("<td id=\"publisher\">").text(item.publisher),
+                                $("<td id=\"onlineMultiplayer\">").text(item.onlineMultiplayer),
+                                $("<td id=\"localMultiplayer\">").text(item.localMultiplayer),
+                                $("<td id=\"played\">").text(item.played),
+                                $("<td id=\"actions\">").html(
                                     '<div class="btn-group btn-group-sm" role="group"><a class="btn btn-light" role="button" href="/videogame/edit?id=' +
                                     encodeURIComponent(item.id) +
                                     '"> <i class="fa fa-edit"></i></a><button class="btn btn-light" data-id="2" type="button" data-bs-target="#confirm-modal" data-bs-toggle="modal"> <i class="fa fa-trash"></i></button></div>'
@@ -108,6 +125,8 @@
             }
 
             $("#deleteData").click(function () {
+                var rowIndex = $(this).closest('tr').index()
+                var videoGameID = document.getEle
                 deleteCustomer($(this).attr("data-id"), function (result) {
                     $("#confirm-modal").modal("hide");
                     loadData();

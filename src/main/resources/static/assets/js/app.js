@@ -138,6 +138,7 @@ function putCustomer(customerID, customer, callbackSuccess, callbackError) {
     });
 }
 
+// DELETE requests
 function deleteCustomer(customerID, callback) {
     $.ajax({
         type: "DELETE",
@@ -145,6 +146,22 @@ function deleteCustomer(customerID, callback) {
             "X-XSRF-TOKEN": getCookie("XSRF-TOKEN")
         },
         url: serviceEndpointURL + "/api/customer/" + customerID,
+        success: function (data) {
+            callback(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR, textStatus, errorThrown);
+        }
+    });
+}
+
+function deleteVideoGame(videoGameID, callback) {
+    $.ajax({
+        type: "DELETE",
+        headers: {
+            "X-XSRF-TOKEN": getCookie("XSRF-TOKEN")
+        },
+        url: serviceEndpointURL + "/api/videogame/" + videoGameID,
         success: function (data) {
             callback(data);
         },
