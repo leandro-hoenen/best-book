@@ -1,5 +1,7 @@
 package ch.fhnw.acrm.data.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,15 +15,17 @@ public class Book {
     @Column(name = "title", nullable = false)
     private String title;
 
-
-    @Column(name = "author", nullable = false)
+    @Column(name = "author")
     private String author;
 
     @Column(name = "description")
     private String description;
 
-    @ManyToOne(cascade = {CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.DETACH}, optional = false)
-    @JoinColumn(name = "agent_id", nullable = false)
+    @Column(name = "read")
+    private boolean read;
+
+    @ManyToOne
+    @JsonIgnore
     private Agent agent;
 
     public Agent getAgent() {
@@ -30,6 +34,14 @@ public class Book {
 
     public void setAgent(Agent agent) {
         this.agent = agent;
+    }
+
+    public boolean getRead() {
+        return read;
+    }
+
+    public void setRead(boolean read) {
+        this.read = read;
     }
 
     public String getTitle() {

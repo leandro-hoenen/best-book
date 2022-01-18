@@ -37,7 +37,7 @@ public class CustomerEndpoint {
     private VideoGameService videoGameService;
 
     // VIDEOGAME mappings
-    @PostMapping(path = "/videogame/new", consumes = "application/json", produces = "application/json")
+    @PostMapping(path = "/videogame", consumes = "application/json", produces = "application/json")
     public ResponseEntity<VideoGame> postVideoGame(@RequestBody VideoGame videoGame) {
         try {
             videoGame = videoGameService.addVideoGame(videoGame);
