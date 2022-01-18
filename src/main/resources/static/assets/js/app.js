@@ -1,3 +1,4 @@
+// POSTS
 function postCustomer(customer, callbackSuccess, callbackError) {
     $.ajax({
         type: "POST",
@@ -7,6 +8,25 @@ function postCustomer(customer, callbackSuccess, callbackError) {
         },
         url: serviceEndpointURL + "/api/customer",
         data: customer,
+        success: function (data) {
+            callbackSuccess(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR, textStatus, errorThrown);
+            callbackError(jqXHR.responseJSON.message);
+        }
+    });
+}
+
+function postBook(book, callbackSuccess, callbackError) {
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        headers: {
+            "X-XSRF-TOKEN": getCookie("XSRF-TOKEN")
+        },
+        url: serviceEndpointURL + "/api/book",
+        data: book,
         success: function (data) {
             callbackSuccess(data);
         },
@@ -93,5 +113,23 @@ function getCustomerJSON(id, name, email, mobile) {
         "name": name,
         "email": email,
         "mobile": mobile
+    });
+}
+
+function getBookJSON(id, title, author, description, status) {
+    if (id === null) {
+        return JSON.stringify({
+            "title": title,
+            "author": author,
+            "description": description,
+            "status": JSON.parse(status)
+        });
+    }
+    return JSON.stringify({
+        "id": id,
+        "title": title,
+        "author": author,
+        "description": description,
+        "status": JSON.stringify(status)
     });
 }
