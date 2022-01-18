@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>A-CRM</title>
+    <title>My Collection</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.0/dist/flatly/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&amp;display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -16,7 +16,7 @@
 <body>
     <div>
         <nav class="navbar navbar-light navbar-expand-md navigation-clean">
-            <div class="container"><a class="navbar-brand" href="/">A-CRM </a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="container"><a class="navbar-brand" href="/">My Collection </a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">My Profile </a>
@@ -29,24 +29,31 @@
     </div>
     <div class="container">
         <div class="page-header">
-            <h2 class="text-center">Create a&nbsp;<strong>customer</strong>. </h2>
+            <h2 class="text-center">Create a&nbsp;<strong>book</strong>. </h2>
         </div>
         <form id="form" method="post">
             <div class="form-group mb-3">
-                <div class="input-group"><span class="input-group-text">Name </span><input class="form-control" type="text" name="name"></div>
+                <div class="input-group"><span class="input-group-text">Title </span><input class="form-control" type="text" name="title"></div>
             </div>
             <div class="form-group mb-3">
-                <div class="input-group"><span class="input-group-text">Email </span><input class="form-control" type="email" name="email"></div>
+                <div class="input-group"><span class="input-group-text">Author </span><input class="form-control" type="text" name="author"></div>
             </div>
             <div class="form-group mb-3">
-                <div class="input-group"><span class="input-group-text">Mobile </span><input class="form-control" type="text" name="mobile"></div>
+                <div class="input-group"><span class="input-group-text">Description</span><input class="form-control" type="text" name="description"></div>
+            </div>
+            <div class="form-group mb-3">
+                <div class="input-group"><span class="input-group-text">Status </span>
+                    <select name="status" id="status">
+                        <option value="true">Done</option>
+                        <option value="false">Not Done</option>
+                    </select></div>
             </div>
             <div class="btn-group" role="group"><button class="btn btn-light" type="submit"> <i class="fa fa-save"></i></button></div>
         </form>
     </div>
     <div class="footer-basic">
         <footer>
-            <p class="copyright">A-CRM © 2021</p>
+            <p class="copyright">My Collection © 2021</p>
         </footer>
     </div>
     <div class="modal fade" role="dialog" tabindex="-1" id="error-modal">
@@ -70,15 +77,16 @@
     <script>
         $(document).ready(function () {
             $("#form").submit(function (event) {
-                postCustomer(
-                    getCustomerJSON(
+                postBook(
+                    getBookJSON(
                         null,
-                        $("input[name=name]").val(),
-                        $("input[name=email]").val(),
-                        $("input[name=mobile]").val()
+                        $("input[name=title]").val(),
+                        $("input[name=author]").val(),
+                        $("input[name=description]").val(),
+                        $("select[name=status]").val()
                     ),
                     function (result) {
-                        window.location.replace("/customer");
+                        window.location.replace("/book");
                     },
                     function (error) {
                         $("#error-modal").modal("show");
