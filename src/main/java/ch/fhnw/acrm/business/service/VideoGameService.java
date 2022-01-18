@@ -1,5 +1,6 @@
 package ch.fhnw.acrm.business.service;
 
+import ch.fhnw.acrm.data.domain.Book;
 import ch.fhnw.acrm.data.domain.Customer;
 import ch.fhnw.acrm.data.domain.Movie;
 import ch.fhnw.acrm.data.domain.VideoGame;
@@ -34,22 +35,13 @@ public class VideoGameService {
         videoGameRepository.deleteById(videoGameId);
     }
 
-//    public VideoGame editEdit(@Valid VideoGame videoGame) throws Exception {
-//        if (customer.getId() == null) {
-//            if (customerRepository.findByMobile(customer.getMobile()) == null) {
-//                customer.setAgent(agentService.getCurrentAgent());
-//                return customerRepository.save(customer);
-//            }
-//            throw new Exception("Mobile number " + customer.getMobile() + " already assigned to a customer.");
-//        }
-//        if (customerRepository.findByMobileAndIdNot(customer.getMobile(), customer.getId()) == null) {
-//            if (customer.getAgent() == null) {
-//                customer.setAgent(agentService.getCurrentAgent());
-//            }
-//            return customerRepository.save(customer);
-//        }
-//        throw new Exception("Mobile number " + customer.getMobile() + " already assigned to a customer.");
-//    }
+    public VideoGame editVideoGame(@Valid VideoGame videoGame) throws Exception {
+        if (videoGameRepository.findById(videoGame.getId()) != null) {
+            videoGame.setAgent(agentService.getCurrentAgent());
+            return videoGameRepository.save(videoGame);
+        }
+        throw new Exception("Book object does not exists");
+    }
 
     // TODO: implement edit videoGame
 }

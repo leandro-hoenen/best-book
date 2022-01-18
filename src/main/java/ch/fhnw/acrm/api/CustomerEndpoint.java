@@ -68,6 +68,17 @@ public class CustomerEndpoint {
         return ResponseEntity.accepted().build();
     }
 
+    @PutMapping(path = "/videogame/{videoGameId}", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<VideoGame> putVideoGame(@RequestBody VideoGame videoGame, @PathVariable(value = "videoGameId") String videoGameId) {
+        try {
+            videoGame.setId(Long.parseLong(videoGameId));
+            videoGame = videoGameService.editVideoGame(videoGame);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, e.getMessage());
+        }
+        return ResponseEntity.accepted().body(videoGame);
+    }
+
     // MOVIE mappings
     @GetMapping(path = "/movie", produces = "application/json")
     public List<Movie> getMovie(){
