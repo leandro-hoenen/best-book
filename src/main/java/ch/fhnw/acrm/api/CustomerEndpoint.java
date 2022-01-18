@@ -124,6 +124,16 @@ public class CustomerEndpoint {
         return bookService.myBooks();
     }
 
+    @DeleteMapping(path = "/book/{bookId}")
+    public ResponseEntity<Void> deleteBook(@PathVariable(value = "bookId") String bookId) {
+        try {
+            bookService.deleteBook(Long.parseLong(bookId));
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, e.getMessage());
+        }
+        return ResponseEntity.accepted().build();
+    }
+
     // CUSTOMER mappings
     @GetMapping(path = "/customer", produces = "application/json")
     public List<Customer> getCustomers() {

@@ -28,4 +28,8 @@ public class BookService {
         return bookRepository.findAll();
     }
 
+    public void deleteBook(Long bookId) {
+        bookRepository.deleteById(bookId);
+    }
+
 }
