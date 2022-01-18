@@ -33,7 +33,7 @@ public class BookService {
     }
 
     public List<Book> myBooks(){
-        return bookRepository.findAll();
+        return bookRepository.findByAgentId(agentService.getCurrentAgent().getId());
     }
 
     public void deleteBook(Long bookId) {
