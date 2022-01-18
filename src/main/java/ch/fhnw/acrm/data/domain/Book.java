@@ -40,7 +40,7 @@ public class Book {
         return read;
     }
 
-    public void setRead(boolean read) {
+    public void setRead(Boolean read) {
         this.read = read;
     }
 

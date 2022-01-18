@@ -102,10 +102,16 @@ public class CustomerEndpoint {
     }
 
     // BOOKS mappings
+
+    @GetMapping(path = "/book", produces = "application/json")
+    public List<Book> getBooks(){
+        return bookService.findAllBooks();
+    }
+
     @PostMapping(path = "/book", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Book> postBook(@RequestBody Book book) {
         try {
-            book = bookService.enterBusinessBook(book);
+            book = bookService.enterBook(book);
         } catch (ConstraintViolationException e) {
             throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, e.getConstraintViolations().iterator().next().getMessage());
         } catch (Exception e) {
@@ -119,9 +125,26 @@ public class CustomerEndpoint {
         return ResponseEntity.created(location).body(book);
     }
 
-    @GetMapping(path = "/book", produces = "application/json")
-    public List<Book> getBook(){
-        return bookService.myBooks();
+    @PutMapping(path = "/book/{bookId}", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<Book> putBook(@RequestBody Book book, @PathVariable(value = "bookId") String bookId) {
+        try {
+            book.setId(Long.parseLong(bookId));
+            book = bookService.editBook(book);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, e.getMessage());
+        }
+        return ResponseEntity.accepted().body(book);
+    }
+
+    @GetMapping(path = "/book/{bookId}", produces = "application/json")
+    public ResponseEntity<Book> getBook(@PathVariable(value = "bookId") String bookId) {
+        Book book = null;
+        try {
+            book = bookService.findBookById(Long.parseLong(bookId));
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+        }
+        return ResponseEntity.ok(book);
     }
 
     @DeleteMapping(path = "/book/{bookId}")
