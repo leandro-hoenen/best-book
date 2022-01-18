@@ -22,7 +22,7 @@ public class Book {
     private String description;
 
     @Column(name = "read")
-    private boolean read;
+    private Boolean read;
 
     @ManyToOne
     @JsonIgnore
@@ -36,7 +36,7 @@ public class Book {
         this.agent = agent;
     }
 
-    public boolean getRead() {
+    public Boolean getRead() {
         return read;
     }
 

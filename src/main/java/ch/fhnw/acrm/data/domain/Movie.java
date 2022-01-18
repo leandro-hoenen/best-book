@@ -33,7 +33,6 @@ public class Movie {
         this.agent = agent;
     }
 
-
     public Boolean getWatched() {
         return watched;
     }
