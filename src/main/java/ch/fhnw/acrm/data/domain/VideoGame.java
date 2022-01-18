@@ -1,5 +1,7 @@
 package ch.fhnw.acrm.data.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -21,17 +23,10 @@ public class VideoGame {
     private Boolean localMultiplayer;
     @Column(name = "played", nullable = false)
     private Boolean played = false;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
-    @JoinColumn(name = "agent_id", nullable = false)
+
+    @ManyToOne
+    @JsonIgnore
     private Agent agent;
-
-    public Agent getAgent() {
-        return agent;
-    }
-
-    public void setAgent(Agent agent) {
-        this.agent = agent;
-    }
 
     public Boolean getPlayed() {
         return played;
@@ -87,5 +82,13 @@ public class VideoGame {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Agent getAgent() {
+        return agent;
+    }
+
+    public void setAgent(Agent agent) {
+        this.agent = agent;
     }
 }

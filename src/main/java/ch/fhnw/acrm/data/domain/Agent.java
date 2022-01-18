@@ -34,27 +34,12 @@ public class Agent {
 	@OneToMany(mappedBy = "agent")
 	@JsonIgnore
 	private List<Customer> customers;
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name = "agent_id")
-	private List<Book> books = new ArrayList<>();
-	@OneToMany(mappedBy = "agent", cascade = {CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.DETACH}, orphanRemoval = true)
-	private List<VideoGame> videoGames = new ArrayList<>();
 
-	public List<VideoGame> getVideoGames() {
-		return videoGames;
-	}
+	@OneToMany(mappedBy = "agent")
+	@JsonIgnore
+	private List<VideoGame> videoGames;
 
-	public void setVideoGames(List<VideoGame> videoGames) {
-		this.videoGames = videoGames;
-	}
 
-	public List<Book> getBooks() {
-		return books;
-	}
-
-	public void setBooks(List<Book> books) {
-		this.books = books;
-	}
 
 	public Long getId() {
 		return id;
@@ -96,6 +81,14 @@ public class Agent {
 
 	public void setCustomers(List<Customer> customers) {
 		this.customers = customers;
+	}
+
+	public List<VideoGame> getVideoGames() {
+		return videoGames;
+	}
+
+	public void setVideoGames(List<VideoGame> videoGames) {
+		this.videoGames = videoGames;
 	}
 
 	public String getRemember() {
