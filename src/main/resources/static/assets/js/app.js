@@ -37,6 +37,25 @@ function postBook(book, callbackSuccess, callbackError) {
     });
 }
 
+function postMovie(movie, callbackSuccess, callbackError) {
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        headers: {
+            "X-XSRF-TOKEN": getCookie("XSRF-TOKEN")
+        },
+        url: serviceEndpointURL + "/api/movie",
+        data: movie,
+        success: function (data) {
+            callbackSuccess(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR, textStatus, errorThrown);
+            callbackError(jqXHR.responseJSON.message);
+        }
+    });
+}
+
 function getCustomer(customerID, callback) {
     $.ajax({
         type: "GET",
@@ -100,6 +119,7 @@ function deleteCustomer(customerID, callback) {
     });
 }
 
+// get JSON objects
 function getCustomerJSON(id, name, email, mobile) {
     if (id === null) {
         return JSON.stringify({
@@ -122,7 +142,7 @@ function getBookJSON(id, title, author, description, status) {
             "title": title,
             "author": author,
             "description": description,
-            "status": JSON.parse(status)
+            "status": status
         });
     }
     return JSON.stringify({
@@ -130,6 +150,22 @@ function getBookJSON(id, title, author, description, status) {
         "title": title,
         "author": author,
         "description": description,
-        "status": JSON.stringify(status)
+        "status": status
+    });
+}
+
+function getMovieJSON(id, title, genre, status) {
+    if (id === null) {
+        return JSON.stringify({
+            "title": title,
+            "genre": genre,
+            "status": status
+        });
+    }
+    return JSON.stringify({
+        "id": id,
+        "title": title,
+        "genre": genre,
+        "status": status
     });
 }
