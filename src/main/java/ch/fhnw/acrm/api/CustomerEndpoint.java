@@ -53,6 +53,16 @@ public class CustomerEndpoint {
         return videoGameService.getMyVideoGames();
     }
 
+    @DeleteMapping(path = "/videogame/{videogameId}")
+    public ResponseEntity<Void> deleteVideoGame(@PathVariable(value = "videogameId") String videoGameId) {
+        try {
+            videoGameService.deleteVideoGame(Long.parseLong(videoGameId));
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, e.getMessage());
+        }
+        return ResponseEntity.accepted().build();
+    }
+
     @PostMapping(path = "/customer", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Customer> postCustomer(@RequestBody Customer customer) {
         try {
