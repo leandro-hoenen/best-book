@@ -17,11 +17,12 @@ public class VideoGameService {
     private AgentService agentService;
 
     public VideoGame addVideoGame(VideoGame videoGame) {
+        videoGame.setAgent(agentService.getCurrentAgent());
         return videoGameRepository.save(videoGame);
     }
 
     public List<VideoGame> getMyVideoGames() {
-        return videoGameRepository.findAll();
+        return videoGameRepository.findByAgentId(agentService.getCurrentAgent().getId());
     }
 
     public void deleteVideoGame(Long videoGameId) {
