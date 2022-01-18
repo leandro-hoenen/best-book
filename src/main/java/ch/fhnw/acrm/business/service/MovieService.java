@@ -33,4 +33,23 @@ public class MovieService {
         movieRepository.deleteById(movieId);
     }
 
+    public Movie editMovie(@Valid Movie movie) throws Exception {
+        if (movieRepository.findById(movie.getId()) != null) {
+            movie.setAgent(agentService.getCurrentAgent());
+            return movieRepository.save(movie);
+        }
+        throw new Exception("Movie object does not exists");
+    }
+
+    public Movie findMovieById(Long movieId) throws Exception {
+        List<Movie> movieList = movieRepository.findByIdAndAgentId(movieId, agentService.getCurrentAgent().getId());
+        if(movieList.isEmpty()){
+            throw new Exception("No movie with ID "+movieId+" found.");
+        }
+        return movieList.get(0);
+    }
+
+    public List<Movie> findAllMovies() {
+        return movieRepository.findByAgentId(agentService.getCurrentAgent().getId());
+    }
 }

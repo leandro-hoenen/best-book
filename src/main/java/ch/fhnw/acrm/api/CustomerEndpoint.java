@@ -71,7 +71,7 @@ public class CustomerEndpoint {
     // MOVIE mappings
     @GetMapping(path = "/movie", produces = "application/json")
     public List<Movie> getMovie(){
-        return movieService.myMovies();
+        return movieService.findAllMovies();
     }
 
     @PostMapping(path = "/movie", consumes = "application/json", produces = "application/json")
@@ -91,6 +91,28 @@ public class CustomerEndpoint {
         return ResponseEntity.created(location).body(movie);
     }
 
+    @PutMapping(path = "/movie/{movieId}", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<Movie> putMovie(@RequestBody Movie movie, @PathVariable(value = "movieId") String movieId) {
+        try {
+            movie.setId(Long.parseLong(movieId));
+            movie = movieService.editMovie(movie);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, e.getMessage());
+        }
+        return ResponseEntity.accepted().body(movie);
+    }
+
+    @GetMapping(path = "/movie/{movieId}", produces = "application/json")
+    public ResponseEntity<Movie> getMovie(@PathVariable(value = "movieId") String movieId) {
+        Movie movie = null;
+        try {
+            movie = movieService.findMovieById(Long.parseLong(movieId));
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+        }
+        return ResponseEntity.ok(movie);
+    }
+
     @DeleteMapping(path = "/movie/{movieId}")
     public ResponseEntity<Void> deleteMovie(@PathVariable(value = "movieId") String movieId) {
         try {
@@ -102,7 +124,6 @@ public class CustomerEndpoint {
     }
 
     // BOOKS mappings
-
     @GetMapping(path = "/book", produces = "application/json")
     public List<Book> getBooks(){
         return bookService.findAllBooks();
