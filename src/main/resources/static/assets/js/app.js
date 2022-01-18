@@ -89,11 +89,95 @@ function getCustomer(customerID, callback) {
     });
 }
 
+function getBook(bookID, callback) {
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: serviceEndpointURL + "/api/book/" + bookID,
+        success: function (data) {
+            callback(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR, textStatus, errorThrown);
+        }
+    });
+}
+
+function getMovie(movieID, callback) {
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: serviceEndpointURL + "/api/movie/" + movieID,
+        success: function (data) {
+            callback(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR, textStatus, errorThrown);
+        }
+    });
+}
+
+function getVideoGame(videogameID, callback) {
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: serviceEndpointURL + "/api/videogame/" + movieID,
+        success: function (data) {
+            callback(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR, textStatus, errorThrown);
+        }
+    });
+}
+
 function getCustomers(callback) {
     $.ajax({
         type: "GET",
         dataType: "json",
         url: serviceEndpointURL + "/api/customer",
+        success: function (data) {
+            callback(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR, textStatus, errorThrown);
+        }
+    });
+}
+
+function getBooks(callback) {
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: serviceEndpointURL + "/api/book",
+        success: function (data) {
+            callback(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR, textStatus, errorThrown);
+        }
+    });
+}
+
+function getMovies(callback) {
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: serviceEndpointURL + "/api/movie",
+        success: function (data) {
+            callback(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR, textStatus, errorThrown);
+        }
+    });
+}
+
+function getVideoGames(callback) {
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: serviceEndpointURL + "/api/videogame",
         success: function (data) {
             callback(data);
         },
@@ -122,6 +206,63 @@ function putCustomer(customerID, customer, callbackSuccess, callbackError) {
     });
 }
 
+function putBook(bookID, book, callbackSuccess, callbackError) {
+    $.ajax({
+        type: "PUT",
+        contentType: "application/json",
+        headers: {
+            "X-XSRF-TOKEN": getCookie("XSRF-TOKEN")
+        },
+        url: serviceEndpointURL + "/api/book/" + bookID,
+        data: book,
+        success: function (data) {
+            callbackSuccess(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR, textStatus, errorThrown);
+            callbackError(jqXHR.responseJSON.message);
+        }
+    });
+}
+
+function putMovie(movieID, movie, callbackSuccess, callbackError) {
+    $.ajax({
+        type: "PUT",
+        contentType: "application/json",
+        headers: {
+            "X-XSRF-TOKEN": getCookie("XSRF-TOKEN")
+        },
+        url: serviceEndpointURL + "/api/movie/" + movieID,
+        data: movie,
+        success: function (data) {
+            callbackSuccess(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR, textStatus, errorThrown);
+            callbackError(jqXHR.responseJSON.message);
+        }
+    });
+}
+
+function putVideoGame(videogameID, videogame, callbackSuccess, callbackError) {
+    $.ajax({
+        type: "PUT",
+        contentType: "application/json",
+        headers: {
+            "X-XSRF-TOKEN": getCookie("XSRF-TOKEN")
+        },
+        url: serviceEndpointURL + "/api/videogame/" + videogameID,
+        data: videogame,
+        success: function (data) {
+            callbackSuccess(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR, textStatus, errorThrown);
+            callbackError(jqXHR.responseJSON.message);
+        }
+    });
+}
+
 function deleteCustomer(customerID, callback) {
     $.ajax({
         type: "DELETE",
@@ -129,6 +270,54 @@ function deleteCustomer(customerID, callback) {
             "X-XSRF-TOKEN": getCookie("XSRF-TOKEN")
         },
         url: serviceEndpointURL + "/api/customer/" + customerID,
+        success: function (data) {
+            callback(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR, textStatus, errorThrown);
+        }
+    });
+}
+
+function deleteBook(bookID, callback) {
+    $.ajax({
+        type: "DELETE",
+        headers: {
+            "X-XSRF-TOKEN": getCookie("XSRF-TOKEN")
+        },
+        url: serviceEndpointURL + "/api/book/" + bookID,
+        success: function (data) {
+            callback(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR, textStatus, errorThrown);
+        }
+    });
+}
+
+function deleteMovie(movieID, callback) {
+    $.ajax({
+        type: "DELETE",
+        headers: {
+            "X-XSRF-TOKEN": getCookie("XSRF-TOKEN")
+        },
+        url: serviceEndpointURL + "/api/movie/" + movieID,
+        success: function (data) {
+            callback(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR, textStatus, errorThrown);
+        }
+    });
+}
+
+function deleteVideoGame(videogameID, callback) {
+    $.ajax({
+        type: "DELETE",
+        headers: {
+            "X-XSRF-TOKEN": getCookie("XSRF-TOKEN")
+        },
+        url: serviceEndpointURL + "/api/videogame/" + videogameID,
         success: function (data) {
             callback(data);
         },

@@ -29,20 +29,27 @@
     </div>
     <div class="container">
         <div class="page-header">
-            <h2 class="text-center">Edit a&nbsp;<strong>customer</strong>. </h2>
+            <h2 class="text-center">Edit a&nbsp;<strong>book</strong>. </h2>
         </div>
         <form id="form" method="post">
             <div class="form-group mb-3">
                 <div class="input-group"><span class="input-group-text">ID </span><input class="form-control" type="text" name="id" readonly=""></div>
             </div>
             <div class="form-group mb-3">
-                <div class="input-group"><span class="input-group-text">Name </span><input class="form-control" type="text" name="name"></div>
+                <div class="input-group"><span class="input-group-text">Title </span><input class="form-control" type="text" name="title"></div>
             </div>
             <div class="form-group mb-3">
-                <div class="input-group"><span class="input-group-text">Email </span><input class="form-control" type="email" name="email"></div>
+                <div class="input-group"><span class="input-group-text">Author </span><input class="form-control" type="text" name="author"></div>
             </div>
             <div class="form-group mb-3">
-                <div class="input-group"><span class="input-group-text">Mobile </span><input class="form-control" type="text" name="mobile"></div>
+                <div class="input-group"><span class="input-group-text">Description </span><input class="form-control" type="text" name="description"></div>
+            </div>
+            <div class="form-group mb-3">
+                <div class="input-group"><span class="input-group-text">Status </span>
+                    <select name="status" id="status">
+                        <option value="true">Done</option>
+                        <option value="false">Not Done</option>
+                    </select></div>
             </div>
             <div class="btn-group" role="group"><button class="btn btn-light" type="submit"> <i class="fa fa-save"></i></button></div>
         </form>
@@ -72,27 +79,29 @@
     <script src="../assets/js/webapp.js"></script>
     <script>
         $(document).ready(function () {
-            customerID = getURLParameter("id");
-            if (customerID !== null) {
-                getCustomer(customerID, function (result) {
+            bookID = getURLParameter("id");
+            if (bookID !== null) {
+                getBook(bookID, function (result) {
                     $("input[name=id]").val(result["id"]);
-                    $("input[name=name]").val(result["name"]);
-                    $("input[name=email]").val(result["email"]);
-                    $("input[name=mobile]").val(result["mobile"]);
+                    $("input[name=title]").val(result["title"]);
+                    $("input[name=author]").val(result["author"]);
+                    $("input[name=description]").val(result["description"]);
+                    $("input[name=status]").val(result["status"]);
                 });
             }
 
             $("#form").submit(function (event) {
-                putCustomer(
-                    customerID,
-                    getCustomerJSON(
+                putBook(
+                    bookID,
+                    getBookJSON(
                         $("input[name=id]").val(),
-                        $("input[name=name]").val(),
-                        $("input[name=email]").val(),
-                        $("input[name=mobile]").val()
+                        $("input[name=title]").val(),
+                        $("input[name=author]").val(),
+                        $("input[name=description]").val(),
+                        $("input[name=status]").val
                     ),
                     function (result) {
-                        window.location.replace("/customer");
+                        window.location.replace("/book");
                     },
                     function (error) {
                         $("#error-modal").modal("show");

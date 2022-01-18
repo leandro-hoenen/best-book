@@ -58,10 +58,10 @@
             <div class="modal-dialog modal-sm" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4>Deletion of a <strong>customer</strong>.</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <h4>Deletion of a <strong>video game</strong>.</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <p>Do you want to delete a customer?</p>
+                        <p>Do you want to delete a video game?</p>
                     </div>
                     <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancel </button><button class="btn btn-primary" id="deleteData" data-id="#" type="button">Delete </button></div>
                 </div>
@@ -83,7 +83,7 @@
             $(loadData());
 
             function loadData() {
-                getCustomers(function (result) {
+                getVideoGames(function (result) {
                     $("#tableData").empty();
                     $.each(result, function (i, item) {
                         $("#tableData").append(
@@ -93,7 +93,7 @@
                                 $("<td>").text(item.email),
                                 $("<td>").text(item.mobile),
                                 $("<td>").html(
-                                    '<div class="btn-group btn-group-sm" role="group"><a class="btn btn-light" role="button" href="/customer/edit?id=' +
+                                    '<div class="btn-group btn-group-sm" role="group"><a class="btn btn-light" role="button" href="/videogame/edit?id=' +
                                     encodeURIComponent(item.id) +
                                     '"> <i class="fa fa-edit"></i></a><button class="btn btn-light" data-id="2" type="button" data-bs-target="#confirm-modal" data-bs-toggle="modal"> <i class="fa fa-trash"></i></button></div>'
                                 )
@@ -104,7 +104,7 @@
             }
 
             $("#deleteData").click(function () {
-                deleteCustomer($(this).attr("data-id"), function (result) {
+                deleteVideoGame($(this).attr("data-id"), function (result) {
                     $("#confirm-modal").modal("hide");
                     loadData();
                 });
