@@ -21,4 +21,8 @@ public class MovieService {
         return movieRepository.findAll();
     }
 
+    public void deleteMovie(Long movieId) {
+        movieRepository.deleteById(movieId);
+    }
+
 }

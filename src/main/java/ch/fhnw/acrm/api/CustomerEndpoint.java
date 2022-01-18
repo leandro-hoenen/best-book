@@ -91,6 +91,16 @@ public class CustomerEndpoint {
         return ResponseEntity.created(location).body(movie);
     }
 
+    @DeleteMapping(path = "/movie/{movieId}")
+    public ResponseEntity<Void> deleteMovie(@PathVariable(value = "movieId") String movieId) {
+        try {
+            movieService.deleteMovie(Long.parseLong(movieId));
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, e.getMessage());
+        }
+        return ResponseEntity.accepted().build();
+    }
+
     // BOOKS mappings
     @PostMapping(path = "/book", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Book> postBook(@RequestBody Book book) {
