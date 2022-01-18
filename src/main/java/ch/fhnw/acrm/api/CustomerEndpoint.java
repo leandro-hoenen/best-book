@@ -6,7 +6,9 @@
 package ch.fhnw.acrm.api;
 
 import ch.fhnw.acrm.business.service.BookService;
+import ch.fhnw.acrm.business.service.MovieService;
 import ch.fhnw.acrm.data.domain.Book;
+import ch.fhnw.acrm.data.domain.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,11 +29,19 @@ public class CustomerEndpoint {
     private CustomerService customerService;
     @Autowired
     private BookService bookService;
+    @Autowired
+    private MovieService movieService;
 
-    @PostMapping(path = "/customer", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Customer> postCustomer(@RequestBody Customer customer) {
+    // MOVIE mappings
+    @GetMapping(path = "/movie", produces = "application/json")
+    public List<Movie> getMovie(){
+        return movieService.myMovies();
+    }
+
+    @PostMapping(path = "/movie", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<Movie> postMovie(@RequestBody Movie movie) {
         try {
-            customer = customerService.editCustomer(customer);
+            movie = movieService.enterMovie(movie);
         } catch (ConstraintViolationException e) {
             throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, e.getConstraintViolations().iterator().next().getMessage());
         } catch (Exception e) {
@@ -39,13 +49,13 @@ public class CustomerEndpoint {
         }
 
         URI location = ServletUriComponentsBuilder
-                .fromCurrentRequest().path("/{customerId}")
-                .buildAndExpand(customer.getId()).toUri();
+                .fromCurrentRequest().path("/{movieId}")
+                .buildAndExpand(movie.getId()).toUri();
 
-        return ResponseEntity.created(location).body(customer);
+        return ResponseEntity.created(location).body(movie);
     }
 
-    //added for books
+    // BOOKS mappings
     @PostMapping(path = "/book", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Book> postBook(@RequestBody Book book) {
         try {
@@ -63,15 +73,32 @@ public class CustomerEndpoint {
         return ResponseEntity.created(location).body(book);
     }
 
+    @GetMapping(path = "/book", produces = "application/json")
+    public List<Book> getBook(){
+        return bookService.myBooks();
+    }
+
+    // CUSTOMER mappings
     @GetMapping(path = "/customer", produces = "application/json")
     public List<Customer> getCustomers() {
         return customerService.findAllCustomers();
     }
 
-    //added for books
-    @GetMapping(path = "/book", produces = "application/json")
-    public List<Book> getBook(){
-        return bookService.myBooks();
+    @PostMapping(path = "/customer", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<Customer> postCustomer(@RequestBody Customer customer) {
+        try {
+            customer = customerService.editCustomer(customer);
+        } catch (ConstraintViolationException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, e.getConstraintViolations().iterator().next().getMessage());
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage());
+        }
+
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest().path("/{customerId}")
+                .buildAndExpand(customer.getId()).toUri();
+
+        return ResponseEntity.created(location).body(customer);
     }
 
     @GetMapping(path = "/customer/{customerId}", produces = "application/json")

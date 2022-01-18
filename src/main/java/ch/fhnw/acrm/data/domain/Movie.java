@@ -3,8 +3,8 @@ package ch.fhnw.acrm.data.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "book")
-public class Book {
+@Table(name = "movie")
+public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
@@ -13,12 +13,11 @@ public class Book {
     @Column(name = "title", nullable = false)
     private String title;
 
+    @Column(name = "genre")
+    private String genre;
 
-    @Column(name = "author", nullable = false)
-    private String author;
-
-    @Column(name = "description")
-    private String description;
+    @Column(name = "watched")
+    private Boolean watched;
 
     @ManyToOne(cascade = {CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.DETACH}, optional = false)
     @JoinColumn(name = "agent_id", nullable = false)
@@ -32,28 +31,29 @@ public class Book {
         this.agent = agent;
     }
 
+
+    public Boolean getWatched() {
+        return watched;
+    }
+
+    public void setWatched(Boolean watched) {
+        this.watched = watched;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
     public String getTitle() {
         return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
     }
 
     public Long getId() {

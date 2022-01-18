@@ -33,11 +33,23 @@ public class Agent {
 	private String remember;
 	@OneToMany(mappedBy = "agent")
 	@JsonIgnore
-	private List<Customer> customers;
+	private List<Customer> customers = new ArrayList<>();
 
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name = "agent_id")
+
+
+	@OneToMany(mappedBy = "agent", cascade = {CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.DETACH}, orphanRemoval = true)
 	private List<Book> books = new ArrayList<>();
+
+	@OneToMany(mappedBy = "agent", cascade = {CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.DETACH}, orphanRemoval = true)
+	private List<Movie> movies = new ArrayList<>();
+
+	public List<Movie> getMovies() {
+		return movies;
+	}
+
+	public void setMovies(List<Movie> movies) {
+		this.movies = movies;
+	}
 
 	public List<Book> getBooks() {
 		return books;
@@ -80,7 +92,6 @@ public class Agent {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 	public List<Customer> getCustomers() {
 		return customers;
 	}
