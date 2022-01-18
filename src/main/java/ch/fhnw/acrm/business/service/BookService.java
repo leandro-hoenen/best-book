@@ -38,9 +38,12 @@ public class BookService {
     }
 
     // Do we need them?
-    public Book editBook(@Valid Book book) {
-        book.setAgent(agentService.getCurrentAgent());
-        return bookRepository.save(book);
+    public Book editBook(@Valid Book book) throws Exception {
+        if (bookRepository.findById(book.getId()) != null) {
+            book.setAgent(agentService.getCurrentAgent());
+            return bookRepository.save(book);
+        }
+        throw new Exception("Book object does not exists");
     }
 
     public Book findBookById(Long bookId) throws Exception {
