@@ -6,8 +6,10 @@
 package ch.fhnw.acrm.api;
 
 import ch.fhnw.acrm.business.service.BookService;
+import ch.fhnw.acrm.business.service.MovieService;
 import ch.fhnw.acrm.business.service.VideoGameService;
 import ch.fhnw.acrm.data.domain.Book;
+import ch.fhnw.acrm.data.domain.Movie;
 import ch.fhnw.acrm.data.domain.VideoGame;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
