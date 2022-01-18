@@ -1,4 +1,4 @@
-// POSTS
+// POST requests
 function postCustomer(customer, callbackSuccess, callbackError) {
     $.ajax({
         type: "POST",
@@ -75,6 +75,7 @@ function postVideoGame(videoGame, callbackSuccess, callbackError) {
     });
 }
 
+// GET requests
 function getCustomer(customerID, callback) {
     $.ajax({
         type: "GET",
@@ -103,6 +104,21 @@ function getCustomers(callback) {
     });
 }
 
+function getVideoGames(callback) {
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: serviceEndpointURL + "/api/videogame",
+        success: function (data) {
+            callback(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR, textStatus, errorThrown);
+        }
+    });
+}
+
+// PUT requests
 function putCustomer(customerID, customer, callbackSuccess, callbackError) {
     $.ajax({
         type: "PUT",

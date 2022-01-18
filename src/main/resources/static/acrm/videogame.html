@@ -47,6 +47,7 @@
                         <th>Online Multiplayer </th>
                         <th>Local Multiplayer </th>
                         <th>Status </th>
+                        <th>Action </th>
                     </tr>
                 </thead>
                 <tbody id="tableData">
@@ -83,17 +84,20 @@
             $(loadData());
 
             function loadData() {
-                getCustomers(function (result) {
+                getVideoGames(function (result) {
                     $("#tableData").empty();
                     $.each(result, function (i, item) {
                         $("#tableData").append(
                             $("<tr>").append(
                                 $("<td>").text(item.id),
                                 $("<td>").text(item.name),
-                                $("<td>").text(item.email),
-                                $("<td>").text(item.mobile),
+                                $("<td>").text(item.developer),
+                                $("<td>").text(item.publisher),
+                                $("<td>").text(item.onlineMultiplayer),
+                                $("<td>").text(item.localMultiplayer),
+                                $("<td>").text(item.played),
                                 $("<td>").html(
-                                    '<div class="btn-group btn-group-sm" role="group"><a class="btn btn-light" role="button" href="/customer/edit?id=' +
+                                    '<div class="btn-group btn-group-sm" role="group"><a class="btn btn-light" role="button" href="/videogame/edit?id=' +
                                     encodeURIComponent(item.id) +
                                     '"> <i class="fa fa-edit"></i></a><button class="btn btn-light" data-id="2" type="button" data-bs-target="#confirm-modal" data-bs-toggle="modal"> <i class="fa fa-trash"></i></button></div>'
                                 )
