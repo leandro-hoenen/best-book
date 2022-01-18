@@ -12,13 +12,16 @@ public class MovieService {
 
     @Autowired
     private MovieRepository movieRepository;
+    @Autowired
+    private AgentService agentService;
 
     public Movie enterMovie(Movie movie){
+        movie.setAgent(agentService.getCurrentAgent());
         return movieRepository.save(movie);
     }
 
     public List<Movie> myMovies(){
-        return movieRepository.findAll();
+        return movieRepository.findByAgentId(agentService.getCurrentAgent().getId());
     }
 
     public void deleteMovie(Long movieId) {
