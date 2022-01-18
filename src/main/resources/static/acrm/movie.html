@@ -16,7 +16,12 @@
 <body>
     <div>
         <nav class="navbar navbar-light navbar-expand-md navigation-clean">
-            <div class="container"><a class="navbar-brand" href="/">A-CRM </a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="container"><a class="navbar-brand" href="/">My Collection </a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <nav class="navbar-main">
+                    <a class="navbar-main" href="#videogame">Video Games</a>
+                    <a class="navbar-main active" href="#movie">Movies</a>
+                    <a class="navbar-main" href="#book">Books</a>
+                </nav>
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">My Profile </a>
@@ -29,17 +34,16 @@
     </div>
     <div class="container">
         <div class="page-header">
-            <h2 class="text-center">My <strong>customers</strong>.</h2>
+            <h2 class="text-center">My <strong>movies</strong></h2>
         </div>
         <div class="table-responsive">
             <table class="table table-borderless">
                 <thead>
                     <tr>
                         <th>ID </th>
-                        <th>Name </th>
-                        <th>Email </th>
-                        <th>Mobile </th>
-                        <th>Action </th>
+                        <th>Title </th>
+                        <th>Genre </th>
+                        <th>Status </th>
                     </tr>
                 </thead>
                 <tbody id="tableData">
@@ -63,7 +67,7 @@
     </div>
     <div class="footer-basic">
         <footer>
-            <p class="copyright">A-CRM © 2021</p>
+            <p class="copyright">My Collection © 2022</p>
         </footer>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
