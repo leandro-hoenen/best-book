@@ -1,6 +1,7 @@
 package ch.fhnw.acrm.business.service;
 
 import ch.fhnw.acrm.data.domain.Customer;
+import ch.fhnw.acrm.data.domain.Movie;
 import ch.fhnw.acrm.data.domain.VideoGame;
 import ch.fhnw.acrm.data.repository.VideoGameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,17 +12,22 @@ import java.util.List;
 
 @Service
 public class VideoGameService {
+
     @Autowired
     private VideoGameRepository videoGameRepository;
     @Autowired
     private AgentService agentService;
 
-    public VideoGame addVideoGame(VideoGame videoGame) {
-        return videoGameRepository.save(videoGame);
+    public VideoGame addVideoGame(@Valid VideoGame videoGame) throws Exception {
+        if (videoGame.getId() == null) {
+            videoGame.setAgent(agentService.getCurrentAgent());
+            return videoGameRepository.save(videoGame);
+        }
+        throw new Exception("VideoGame object already exists");
     }
 
     public List<VideoGame> getMyVideoGames() {
-        return videoGameRepository.findAll();
+        return videoGameRepository.findByAgentId(agentService.getCurrentAgent().getId());
     }
 
     public void deleteVideoGame(Long videoGameId) {
