@@ -1,5 +1,6 @@
 package ch.fhnw.acrm.business.service;
 
+import ch.fhnw.acrm.data.domain.Customer;
 import ch.fhnw.acrm.data.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -11,6 +12,7 @@ import org.springframework.validation.annotation.Validated;
 import ch.fhnw.acrm.data.domain.Agent;
 import ch.fhnw.acrm.data.repository.AgentRepository;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Service
@@ -19,9 +21,15 @@ public class BookService {
 
     @Autowired
     private BookRepository bookRepository;
+    @Autowired
+    private AgentService agentService;
 
-    public Book enterBusinessBook(Book book){
-        return bookRepository.save(book);
+    public Book enterBusinessBook(@Valid Book book) throws Exception {
+        if (book.getId() == null) {
+            book.setAgent(agentService.getCurrentAgent());
+            return bookRepository.save(book);
+        }
+        throw new Exception("Book object already exists");
     }
 
     public List<Book> myBooks(){
