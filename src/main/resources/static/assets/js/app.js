@@ -56,6 +56,25 @@ function postMovie(movie, callbackSuccess, callbackError) {
     });
 }
 
+function postVideoGame(videoGame, callbackSuccess, callbackError) {
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        headers: {
+            "X-XSRF-TOKEN": getCookie("XSRF-TOKEN")
+        },
+        url: serviceEndpointURL + "/api/videogame",
+        data: videoGame,
+        success: function (data) {
+            callbackSuccess(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR, textStatus, errorThrown);
+            callbackError(jqXHR.responseJSON.message);
+        }
+    });
+}
+
 function getCustomer(customerID, callback) {
     $.ajax({
         type: "GET",
@@ -167,5 +186,27 @@ function getMovieJSON(id, title, genre, status) {
         "title": title,
         "genre": genre,
         "status": status
+    });
+}
+
+function getVideoGameJSON(id, name, developer, publisher, onlineMultiplayer, localMultiplayer, played) {
+    if (id === null) {
+        return JSON.stringify({
+            "name": name,
+            "developer": developer,
+            "publisher": publisher,
+            "onlineMultiplayer": onlineMultiplayer,
+            "localMultiplayer": localMultiplayer,
+            "played": played
+        });
+    }
+    return JSON.stringify({
+        "id": id,
+        "name": name,
+        "developer": developer,
+        "publisher": publisher,
+        "onlineMultiplayer": onlineMultiplayer,
+        "localMultiplayer": localMultiplayer,
+        "played": played
     });
 }
