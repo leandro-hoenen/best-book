@@ -33,13 +33,36 @@ public class Agent {
 	private String remember;
 	@OneToMany(mappedBy = "agent")
 	@JsonIgnore
-	private List<Customer> customers;
+	private List<Customer> customers = new ArrayList<>();
+
 
 	@OneToMany(mappedBy = "agent")
 	@JsonIgnore
-	private List<VideoGame> videoGames;
+	private List<Book> books = new ArrayList<>();
 
+	@OneToMany(mappedBy = "agent")
+	@JsonIgnore
+	private List<VideoGame> videoGames = new ArrayList<>();
 
+	@OneToMany(mappedBy = "agent")
+	@JsonIgnore
+	private List<Movie> movies = new ArrayList<>();
+
+	public List<Movie> getMovies() {
+		return movies;
+	}
+
+	public void setMovies(List<Movie> movies) {
+		this.movies = movies;
+	}
+
+	public List<Book> getBooks() {
+		return books;
+	}
+
+	public void setBooks(List<Book> books) {
+		this.books = books;
+	}
 
 	public Long getId() {
 		return id;

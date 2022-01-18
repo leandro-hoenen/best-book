@@ -1,5 +1,7 @@
 package ch.fhnw.acrm.data.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,32 +15,33 @@ public class Book {
     @Column(name = "title", nullable = false)
     private String title;
 
-    @Column(name = "price", nullable = false)
-    private Integer price;
-
-    @Column(name = "isbn")
-    private String isbn;
-
-    @Column(name = "author", nullable = false)
+    @Column(name = "author")
     private String author;
 
     @Column(name = "description")
     private String description;
 
-    public String getIsbn() {
-        return isbn;
+    @Column(name = "read")
+    private boolean read;
+
+    @ManyToOne
+    @JsonIgnore
+    private Agent agent;
+
+    public Agent getAgent() {
+        return agent;
     }
 
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
+    public void setAgent(Agent agent) {
+        this.agent = agent;
     }
 
-    public Integer getPrice() {
-        return price;
+    public boolean getRead() {
+        return read;
     }
 
-    public void setPrice(Integer price) {
-        this.price = price;
+    public void setRead(boolean read) {
+        this.read = read;
     }
 
     public String getTitle() {
