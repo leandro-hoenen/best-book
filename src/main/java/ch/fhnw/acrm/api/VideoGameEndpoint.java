@@ -25,27 +25,27 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/api")
 public class VideoGameEndpoint {
-    @Autowired
-    private VideoGameService videoGameService;
+//    @Autowired
+//    private VideoGameService videoGameService;
+//
+//    @PostMapping(path = "/videogame/new", consumes = "application/json", produces = "application/json")
+//    public ResponseEntity<VideoGame> postVideoGame(@RequestBody VideoGame videoGame) {
+//        try {
+//            videoGame = videoGameService.addVideoGame(videoGame);
+//        } catch (ConstraintViolationException e) {
+//            throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, e.getConstraintViolations().iterator().next().getMessage());
+//        } catch (Exception e) {
+//            throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage());
+//        }
+//        URI location = ServletUriComponentsBuilder
+//                .fromCurrentRequest().path("/{videoGameId}")
+//                .buildAndExpand(videoGame.getId()).toUri();
+//
+//        return ResponseEntity.created(location).body(videoGame);
+//    }
 
-    @PostMapping(path = "/videogame/new", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<VideoGame> postVideoGame(@RequestBody VideoGame videoGame) {
-        try {
-            videoGame = videoGameService.addVideoGame(videoGame);
-        } catch (ConstraintViolationException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, e.getConstraintViolations().iterator().next().getMessage());
-        } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage());
-        }
-        URI location = ServletUriComponentsBuilder
-                .fromCurrentRequest().path("/{videoGameId}")
-                .buildAndExpand(videoGame.getId()).toUri();
-
-        return ResponseEntity.created(location).body(videoGame);
-    }
-
-    @GetMapping(path = "/videogame", produces = "application/json")
-    public List<VideoGame> getVideoGame() {
-        return videoGameService.getMyVideoGames();
-    }
+//    @GetMapping(path = "/videogame", produces = "application/json")
+//    public List<VideoGame> getVideoGame() {
+//        return videoGameService.getMyVideoGames();
+//    }
 }
