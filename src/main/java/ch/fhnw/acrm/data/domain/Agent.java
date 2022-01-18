@@ -36,11 +36,16 @@ public class Agent {
 	private List<Customer> customers = new ArrayList<>();
 
 
-
-	@OneToMany(mappedBy = "agent", cascade = {CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.DETACH}, orphanRemoval = true)
+	@OneToMany(mappedBy = "agent")
+	@JsonIgnore
 	private List<Book> books = new ArrayList<>();
 
-	@OneToMany(mappedBy = "agent", cascade = {CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.DETACH}, orphanRemoval = true)
+	@OneToMany(mappedBy = "agent")
+	@JsonIgnore
+	private List<VideoGame> videoGames = new ArrayList<>();
+
+	@OneToMany(mappedBy = "agent")
+	@JsonIgnore
 	private List<Movie> movies = new ArrayList<>();
 
 	public List<Movie> getMovies() {
@@ -92,12 +97,21 @@ public class Agent {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	public List<Customer> getCustomers() {
 		return customers;
 	}
 
 	public void setCustomers(List<Customer> customers) {
 		this.customers = customers;
+	}
+
+	public List<VideoGame> getVideoGames() {
+		return videoGames;
+	}
+
+	public void setVideoGames(List<VideoGame> videoGames) {
+		this.videoGames = videoGames;
 	}
 
 	public String getRemember() {
