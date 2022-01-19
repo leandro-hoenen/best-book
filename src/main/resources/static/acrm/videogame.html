@@ -117,7 +117,7 @@
                                 $("<td id=\"actions\">").html(
                                     '<div class="btn-group">' +
                                         '<button id="edit_button" onclick="window.location.href = \'' + editLink + '\';">edit' + '</botton>' +
-                                        '<button id="delete_button">delete</button>' +
+                                        '<button id="delete_button" value="hello" onclick="initializeDelete(this.id)">delete</button>' +
                                     '</div>'
                                 )
                             )
@@ -136,6 +136,10 @@
                 // });
             });
         });
+
+        function initializeDelete(id) {
+            console.log(id);
+        }
     </script>
 </body>
 
