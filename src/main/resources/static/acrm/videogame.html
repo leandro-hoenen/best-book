@@ -82,50 +82,6 @@
     <script>
         $(document).ready(function () {
             $(loadData());
-
-            function loadData() {
-                getVideoGames(function (result) {
-                    $("#tableData").empty();
-                    $.each(result, function (i, item) {
-                        if (item.onlineMultiplayer === true) {
-                            item.onlineMultiplayer = "Yes";
-                        } else {
-                            item.onlineMultiplayer = "No";
-                        }
-
-                        if (item.localMultiplayer === true) {
-                            item.localMultiplayer = "Yes";
-                        } else {
-                            item.localMultiplayer = "No"
-                        }
-
-                        if (item.played === true) {
-                            item.played = "Done"
-                        } else {
-                            item.played = "Not Done"
-                        }
-                        const editLink = "/customer/edit?id=" + encodeURIComponent(item.id);
-                        $("#tableData").append(
-                            $("<tr>").append(
-                                $("<td id=\"id\">").text(item.id),
-                                $("<td id=\"title\">").text(item.name),
-                                $("<td id=\"developer\">").text(item.developer),
-                                $("<td id=\"publisher\">").text(item.publisher),
-                                $("<td id=\"onlineMultiplayer\">").text(item.onlineMultiplayer),
-                                $("<td id=\"localMultiplayer\">").text(item.localMultiplayer),
-                                $("<td id=\"played\">").text(item.played),
-                                $("<td id=\"actions\">").html(
-                                    '<div class="btn-group">' +
-                                        '<button id="edit_button" onclick="window.location.href = \'' + editLink + '\';">edit' + '</botton>' +
-                                        '<button id="' + item.id + '" value="hello" onclick="initializeDelete(this.id)">delete</button>' +
-                                    '</div>'
-                                )
-                            )
-                        );
-                    });
-                });
-            }
-
             $("#deleteData").click(function () {
                 debugger;
                 const rowIndex = $(this).closest('tr');
@@ -137,7 +93,56 @@
             });
         });
 
+        function loadData() {
+            getVideoGames(function (result) {
+                $("#tableData").empty();
+                $.each(result, function (i, item) {
+                    if (item.onlineMultiplayer === true) {
+                        item.onlineMultiplayer = "Yes";
+                    } else {
+                        item.onlineMultiplayer = "No";
+                    }
+
+                    if (item.localMultiplayer === true) {
+                        item.localMultiplayer = "Yes";
+                    } else {
+                        item.localMultiplayer = "No"
+                    }
+
+                    if (item.played === true) {
+                        item.played = "Done"
+                    } else {
+                        item.played = "Not Done"
+                    }
+                    const editLink = "/customer/edit?id=" + encodeURIComponent(item.id);
+                    $("#tableData").append(
+                        $("<tr>").append(
+                            $("<td id=\"id\">").text(item.id),
+                            $("<td id=\"title\">").text(item.name),
+                            $("<td id=\"developer\">").text(item.developer),
+                            $("<td id=\"publisher\">").text(item.publisher),
+                            $("<td id=\"onlineMultiplayer\">").text(item.onlineMultiplayer),
+                            $("<td id=\"localMultiplayer\">").text(item.localMultiplayer),
+                            $("<td id=\"played\">").text(item.played),
+                            $("<td id=\"actions\">").html(
+                                '<div class="btn-group">' +
+                                '<button id="edit_button" onclick="window.location.href = \'' + editLink + '\';">edit' + '</botton>' +
+                                '<button id="' + item.id + '" value="hello" onclick="initializeDelete(this.id)">delete</button>' +
+                                '</div>'
+                            )
+                        )
+                    );
+                });
+            });
+        }
+
         function initializeDelete(id) {
+            let confirmAction = confirm("are you sure to delete this item?");
+            if (confirmAction) {
+                alert("item successfully deleted");
+            } else {
+                alert("action canceled");
+            }
             console.log(id);
         }
     </script>
