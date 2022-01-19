@@ -245,7 +245,7 @@ function putMovie(movieID, movie, callbackSuccess, callbackError) {
     });
 }
 
-function putVideoGame(videoGameID, videoGame, callbackSuccess, callbackError) {
+function putVideoGame(videoGameID, videogame, callbackSuccess, callbackError) {
     $.ajax({
         type: "PUT",
         contentType: "application/json",
@@ -253,7 +253,7 @@ function putVideoGame(videoGameID, videoGame, callbackSuccess, callbackError) {
             "X-XSRF-TOKEN": getCookie("XSRF-TOKEN")
         },
         url: serviceEndpointURL + "/api/videogame/" + videoGameID,
-        data: videoGame,
+        data: videogame,
         success: function (data) {
             callbackSuccess(data);
         },

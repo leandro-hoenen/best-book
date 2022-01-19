@@ -31,6 +31,14 @@ public class VideoGameService {
         return videoGameRepository.findByAgentId(agentService.getCurrentAgent().getId());
     }
 
+    public VideoGame findVideoGameById(Long videogameId) throws Exception {
+        List<VideoGame> videoGameList = videoGameRepository.findByIdAndAgentId(videogameId, agentService.getCurrentAgent().getId());
+        if(videoGameList.isEmpty()){
+            throw new Exception("No movie with ID "+videogameId+" found.");
+        }
+        return videoGameList.get(0);
+    }
+
     public void deleteVideoGame(Long videoGameId) {
         videoGameRepository.deleteById(videoGameId);
     }

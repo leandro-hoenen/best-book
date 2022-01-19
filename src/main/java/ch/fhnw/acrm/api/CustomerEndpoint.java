@@ -58,6 +58,17 @@ public class CustomerEndpoint {
         return videoGameService.getMyVideoGames();
     }
 
+    @GetMapping(path = "/videogame/{videogameId}", produces = "application/json")
+    public ResponseEntity<VideoGame> getVideogame(@PathVariable(value = "videogameId") String videogameId) {
+        VideoGame videogame = null;
+        try {
+            videogame = videoGameService.findVideoGameById(Long.parseLong(videogameId));
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+        }
+        return ResponseEntity.ok(videogame);
+    }
+
     @DeleteMapping(path = "/videogame/{videogameId}")
     public ResponseEntity<Void> deleteVideoGame(@PathVariable(value = "videogameId") String videoGameId) {
         try {
@@ -68,8 +79,8 @@ public class CustomerEndpoint {
         return ResponseEntity.accepted().build();
     }
 
-    @PutMapping(path = "/videogame/{videoGameId}", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<VideoGame> putVideoGame(@RequestBody VideoGame videoGame, @PathVariable(value = "videoGameId") String videoGameId) {
+    @PutMapping(path = "/videogame/{videogameId}", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<VideoGame> putVideoGame(@RequestBody VideoGame videoGame, @PathVariable(value = "videogameId") String videoGameId) {
         try {
             videoGame.setId(Long.parseLong(videoGameId));
             videoGame = videoGameService.editVideoGame(videoGame);

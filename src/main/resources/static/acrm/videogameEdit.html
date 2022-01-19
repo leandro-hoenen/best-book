@@ -70,7 +70,7 @@
     </div>
     <div class="footer-basic">
         <footer>
-            <p class="copyright">A-CRM © 2021</p>
+            <p class="copyright">My Collection © 2021</p>
         </footer>
     </div>
     <div class="modal fade" role="dialog" tabindex="-1" id="error-modal">
@@ -93,22 +93,22 @@
     <script src="../assets/js/webapp.js"></script>
     <script>
         $(document).ready(function () {
-            const videogameID = getURLParameter("id");
-            if (videogameID !== null) {
-                getVideoGame(videogameID, function (result) {
+            videoGameID = getURLParameter("id");
+            if (videoGameID !== null) {
+                getVideoGame(videoGameID, function (result) {
                     $("input[name=id]").val(result["id"]);
-                    $("input[name=title]").val(result["name"]);
+                    $("input[name=name]").val(result["name"]);
                     $("input[name=developer]").val(result["developer"]);
                     $("input[name=publisher]").val(result["publisher"]);
-                    $("select[name=onlineMultiplayer]").val(result["onlineMultiplayer"]);
-                    $("select[name=localMultiplayer]").val(result["localMultiplayer"]);
-                    $("select[name=played]").val(result["played"]);
+                    $("input[name=onlineMultiplayer]").val(result["onlineMultiplayer"]);
+                    $("input[name=localMultiplayer]").val(result["localMultiplayer"]);
+                    $("input[name=played]").val(result["played"]);
                 });
             }
 
             $("#form").submit(function (event) {
                 putVideoGame(
-                    videogameID,
+                    videoGameID,
                     getVideoGameJSON(
                         $("input[name=id]").val(),
                         $("input[name=name]").val(),
