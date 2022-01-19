@@ -1,4 +1,4 @@
-// POSTS
+// POST requests
 function postCustomer(customer, callbackSuccess, callbackError) {
     $.ajax({
         type: "POST",
@@ -117,11 +117,11 @@ function getMovie(movieID, callback) {
     });
 }
 
-function getVideoGame(videogameID, callback) {
+function getVideoGame(videoGameID, callback) {
     $.ajax({
         type: "GET",
         dataType: "json",
-        url: serviceEndpointURL + "/api/videogame/" + movieID,
+        url: serviceEndpointURL + "/api/videogame/" + videoGameID,
         success: function (data) {
             callback(data);
         },
@@ -187,6 +187,21 @@ function getVideoGames(callback) {
     });
 }
 
+function getVideoGames(callback) {
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: serviceEndpointURL + "/api/videogame",
+        success: function (data) {
+            callback(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR, textStatus, errorThrown);
+        }
+    });
+}
+
+// PUT requests
 function putCustomer(customerID, customer, callbackSuccess, callbackError) {
     $.ajax({
         type: "PUT",
@@ -244,15 +259,15 @@ function putMovie(movieID, movie, callbackSuccess, callbackError) {
     });
 }
 
-function putVideoGame(videogameID, videogame, callbackSuccess, callbackError) {
+function putVideoGame(videoGameID, videoGame, callbackSuccess, callbackError) {
     $.ajax({
         type: "PUT",
         contentType: "application/json",
         headers: {
             "X-XSRF-TOKEN": getCookie("XSRF-TOKEN")
         },
-        url: serviceEndpointURL + "/api/videogame/" + videogameID,
-        data: videogame,
+        url: serviceEndpointURL + "/api/videogame/" + videoGameID,
+        data: videoGame,
         success: function (data) {
             callbackSuccess(data);
         },
@@ -263,6 +278,7 @@ function putVideoGame(videogameID, videogame, callbackSuccess, callbackError) {
     });
 }
 
+// DELETE requests
 function deleteCustomer(customerID, callback) {
     $.ajax({
         type: "DELETE",
@@ -311,13 +327,13 @@ function deleteMovie(movieID, callback) {
     });
 }
 
-function deleteVideoGame(videogameID, callback) {
+function deleteVideoGame(videoGameID, callback) {
     $.ajax({
         type: "DELETE",
         headers: {
             "X-XSRF-TOKEN": getCookie("XSRF-TOKEN")
         },
-        url: serviceEndpointURL + "/api/videogame/" + videogameID,
+        url: serviceEndpointURL + "/api/videogame/" + videoGameID,
         success: function (data) {
             callback(data);
         },
