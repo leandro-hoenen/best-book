@@ -104,6 +104,7 @@
                         } else {
                             item.played = "Not Done"
                         }
+                        const editLink = "/customer/edit?id=" + encodeURIComponent(item.id);
                         $("#tableData").append(
                             $("<tr>").append(
                                 $("<td id=\"id\">").text(item.id),
@@ -114,9 +115,10 @@
                                 $("<td id=\"localMultiplayer\">").text(item.localMultiplayer),
                                 $("<td id=\"played\">").text(item.played),
                                 $("<td id=\"actions\">").html(
-                                    '<div class="btn-group btn-group-sm" role="group"><a class="btn btn-light" role="button" href="/videogame/edit?id=' +
-                                    encodeURIComponent(item.id) +
-                                    '"> <i class="fa fa-edit"></i></a><button class="btn btn-light" data-id="2" type="button" data-bs-target="#confirm-modal" data-bs-toggle="modal"> <i class="fa fa-trash"></i></button></div>'
+                                    '<div class="btn-group">' +
+                                        '<button id="edit_button" onclick="window.location.href = \'' + editLink + '\';">edit' + '</botton>' +
+                                        '<button id="delete_button">delete</button>' +
+                                    '</div>'
                                 )
                             )
                         );
@@ -125,12 +127,13 @@
             }
 
             $("#deleteData").click(function () {
-                var rowIndex = $(this).closest('tr').index()
-                var videoGameID = document.getEle
-                deleteCustomer($(this).attr("data-id"), function (result) {
-                    $("#confirm-modal").modal("hide");
-                    loadData();
-                });
+                debugger;
+                const rowIndex = $(this).closest('tr');
+                //var videoGameID = document.getEle
+                // deleteCustomer($(this).attr("data-id"), function (result) {
+                //     $("#confirm-modal").modal("hide");
+                //     loadData();
+                // });
             });
         });
     </script>
