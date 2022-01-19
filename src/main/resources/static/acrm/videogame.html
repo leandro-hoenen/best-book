@@ -82,15 +82,6 @@
     <script>
         $(document).ready(function () {
             $(loadData());
-            $("#deleteData").click(function () {
-                debugger;
-                const rowIndex = $(this).closest('tr');
-                //var videoGameID = document.getEle
-                // deleteCustomer($(this).attr("data-id"), function (result) {
-                //     $("#confirm-modal").modal("hide");
-                //     loadData();
-                // });
-            });
         });
 
         function loadData() {
@@ -146,7 +137,6 @@
             } else {
                 alert("action canceled");
             }
-            console.log(id);
         }
     </script>
 </body>
