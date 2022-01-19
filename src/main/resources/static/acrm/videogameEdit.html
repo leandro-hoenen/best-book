@@ -60,7 +60,7 @@
             </div>
             <div class="form-group mb-3">
                 <div class="input-group"><span class="input-group-text">Status </span>
-                    <select name="status" id="status">
+                    <select name="played" id="played">
                         <option value="true">Done</option>
                         <option value="false">Not Done</option>
                     </select></div>
@@ -93,16 +93,16 @@
     <script src="../assets/js/webapp.js"></script>
     <script>
         $(document).ready(function () {
-            videogameID = getURLParameter("id");
+            const videogameID = getURLParameter("id");
             if (videogameID !== null) {
                 getVideoGame(videogameID, function (result) {
                     $("input[name=id]").val(result["id"]);
-                    $("input[name=name]").val(result["name"]);
+                    $("input[name=title]").val(result["name"]);
                     $("input[name=developer]").val(result["developer"]);
                     $("input[name=publisher]").val(result["publisher"]);
-                    $("input[name=onlineMultiplayer]").val(result["onlineMultiplayer"]);
-                    $("input[name=localMultiplayer]").val(result["localMultiplayer"]);
-                    $("input[name=played]").val(result["played"]);
+                    $("select[name=onlineMultiplayer]").val(result["onlineMultiplayer"]);
+                    $("select[name=localMultiplayer]").val(result["localMultiplayer"]);
+                    $("select[name=played]").val(result["played"]);
                 });
             }
 
