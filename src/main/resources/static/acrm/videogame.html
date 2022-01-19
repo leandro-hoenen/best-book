@@ -139,7 +139,10 @@
         function initializeDelete(id) {
             let confirmAction = confirm("are you sure to delete this item?");
             if (confirmAction) {
-                alert("item successfully deleted");
+                deleteVideoGame(id, function (result) {
+                    loadData();
+                    alert("item successfully deleted");
+                });
             } else {
                 alert("action canceled");
             }
