@@ -84,18 +84,18 @@
                 getMovies(function (result) {
                     $("#tableData").empty();
                     $.each(result, function (i, item) {
-                        if (item.status === true) {
-                            item.status = "Done"
+                        if (item.watched === true) {
+                            item.watched = "Done"
                         }
                         else {
-                            item.status = "Not Done"
+                            item.watched = "Not Done"
                         }
                         $("#tableData").append(
                             $("<tr>").append(
                                 $("<td>").text(item.id),
                                 $("<td>").text(item.title),
                                 $("<td>").text(item.genre),
-                                $("<td>").text(item.status),
+                                $("<td>").text(item.watched),
                                 $("<td>").html(
                                     '<div class="btn-group btn-group-sm" role="group"><a class="btn btn-light" role="button" href="/movie/edit?id=' +
                                     encodeURIComponent(item.id) +

@@ -364,19 +364,19 @@ function getBookJSON(id, title, author, description, read) {
     });
 }
 
-function getMovieJSON(id, title, genre, status) {
+function getMovieJSON(id, title, genre, watched) {
     if (id === null) {
         return JSON.stringify({
             "title": title,
             "genre": genre,
-            "status": status
+            "watched": watched
         });
     }
     return JSON.stringify({
         "id": id,
         "title": title,
         "genre": genre,
-        "status": status
+        "watched": watched
     });
 }
 

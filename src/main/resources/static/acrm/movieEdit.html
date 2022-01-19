@@ -43,7 +43,7 @@
             </div>
             <div class="form-group mb-3">
                 <div class="input-group"><span class="input-group-text">Status </span>
-                    <select name="status" id="status">
+                    <select name="watched" id="watched">
                         <option value="true">Done</option>
                         <option value="false">Not Done</option>
                     </select></div>
@@ -82,7 +82,7 @@
                     $("input[name=id]").val(result["id"]);
                     $("input[name=title]").val(result["title"]);
                     $("input[name=genre]").val(result["genre"]);
-                    $("input[name=status]").val(result["status"]);
+                    $("input[name=watched]").val(result["watched"]);
                 });
             }
 
@@ -93,7 +93,7 @@
                         $("input[name=id]").val(),
                         $("input[name=title]").val(),
                         $("input[name=genre]").val(),
-                        $("input[name=status]").val()
+                        $("select[name=watched]").val()
                     ),
                     function (result) {
                         window.location.replace("/movie");
