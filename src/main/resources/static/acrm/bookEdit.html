@@ -46,7 +46,7 @@
             </div>
             <div class="form-group mb-3">
                 <div class="input-group"><span class="input-group-text">Status </span>
-                    <select name="status" id="status">
+                    <select name="read" id="read">
                         <option value="true">Done</option>
                         <option value="false">Not Done</option>
                     </select></div>
@@ -98,7 +98,7 @@
                         $("input[name=title]").val(),
                         $("input[name=author]").val(),
                         $("input[name=description]").val(),
-                        $("select[name=read]").val
+                        $("select[name=read]").val()
                     ),
                     function (result) {
                         window.location.replace("/book");
