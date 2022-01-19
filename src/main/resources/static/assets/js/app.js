@@ -187,20 +187,6 @@ function getVideoGames(callback) {
     });
 }
 
-function getVideoGames(callback) {
-    $.ajax({
-        type: "GET",
-        dataType: "json",
-        url: serviceEndpointURL + "/api/videogame",
-        success: function (data) {
-            callback(data);
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log(jqXHR, textStatus, errorThrown);
-        }
-    });
-}
-
 // PUT requests
 function putCustomer(customerID, customer, callbackSuccess, callbackError) {
     $.ajax({
@@ -360,13 +346,13 @@ function getCustomerJSON(id, name, email, mobile) {
     });
 }
 
-function getBookJSON(id, title, author, description, status) {
+function getBookJSON(id, title, author, description, read) {
     if (id === null) {
         return JSON.stringify({
             "title": title,
             "author": author,
             "description": description,
-            "status": status
+            "read": read
         });
     }
     return JSON.stringify({
@@ -374,7 +360,7 @@ function getBookJSON(id, title, author, description, status) {
         "title": title,
         "author": author,
         "description": description,
-        "status": status
+        "read": read
     });
 }
 

@@ -86,7 +86,7 @@
                     $("input[name=title]").val(result["title"]);
                     $("input[name=author]").val(result["author"]);
                     $("input[name=description]").val(result["description"]);
-                    $("input[name=status]").val(result["status"]);
+                    $("input[name=read]").val(result["read"]);
                 });
             }
 
@@ -98,7 +98,7 @@
                         $("input[name=title]").val(),
                         $("input[name=author]").val(),
                         $("input[name=description]").val(),
-                        $("input[name=status]").val
+                        $("select[name=read]").val
                     ),
                     function (result) {
                         window.location.replace("/book");

@@ -45,10 +45,18 @@
                 <div class="input-group"><span class="input-group-text">Publisher </span><input class="form-control" type="text" name="publisher"></div>
             </div>
             <div class="form-group mb-3">
-                <div class="input-group"><span class="input-group-text">Online Multiplayer </span><input class="form-control" type="text" name="onlineMultiplayer"></div>
+                <div class="input-group"><span class="input-group-text">Online Multiplayer </span>
+                    <select name="onlineMultiplayer" id="onlineMultiplayer">
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select></div>
             </div>
             <div class="form-group mb-3">
-                <div class="input-group"><span class="input-group-text">Local Multiplayer </span><input class="form-control" type="text" name="localMultiplayer"></div>
+                <div class="input-group"><span class="input-group-text">Local Multiplayer </span>
+                    <select name="localMultiplayer" id="localMultiplayer">
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select></div>
             </div>
             <div class="form-group mb-3">
                 <div class="input-group"><span class="input-group-text">Status </span>
@@ -89,12 +97,12 @@
             if (videogameID !== null) {
                 getVideoGame(videogameID, function (result) {
                     $("input[name=id]").val(result["id"]);
-                    $("input[name=title]").val(result["title"]);
+                    $("input[name=name]").val(result["name"]);
                     $("input[name=developer]").val(result["developer"]);
                     $("input[name=publisher]").val(result["publisher"]);
                     $("input[name=onlineMultiplayer]").val(result["onlineMultiplayer"]);
                     $("input[name=localMultiplayer]").val(result["localMultiplayer"]);
-                    $("input[name=status]").val(result["status"]);
+                    $("input[name=played]").val(result["played"]);
                 });
             }
 
@@ -103,12 +111,12 @@
                     videogameID,
                     getVideoGameJSON(
                         $("input[name=id]").val(),
-                        $("input[name=title]").val(),
+                        $("input[name=name]").val(),
                         $("input[name=developer]").val(),
                         $("input[name=publisher]").val(),
-                        $("input[name=onlineMultiplayer]").val(),
-                        $("input[name=localMultiplayer]").val(),
-                        $("input[name=status]").val()
+                        $("select[name=onlineMultiplayer]").val(),
+                        $("select[name=localMultiplayer]").val(),
+                        $("select[name=played]").val()
                     ),
                     function (result) {
                         window.location.replace("/videogame");

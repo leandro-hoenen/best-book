@@ -28,20 +28,20 @@ public class Book {
     @JsonIgnore
     private Agent agent;
 
-    public Agent getAgent() {
-        return agent;
-    }
-
-    public void setAgent(Agent agent) {
-        this.agent = agent;
-    }
-
     public Boolean getRead() {
         return read;
     }
 
     public void setRead(Boolean read) {
         this.read = read;
+    }
+
+    public Agent getAgent() {
+        return agent;
+    }
+
+    public void setAgent(Agent agent) {
+        this.agent = agent;
     }
 
     public String getTitle() {
