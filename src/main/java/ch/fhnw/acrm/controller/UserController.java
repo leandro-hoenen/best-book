@@ -22,7 +22,7 @@ public class UserController {
 
     @GetMapping("/login")
     public String getLoginView() {
-        return "user/login_bestBook.html";
+        return "user/login.html";
     }
 
     @GetMapping("/user/register")
