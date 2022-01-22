@@ -83,7 +83,6 @@ As a {User}, I want to be able to save the entry for each collection with the ac
 As a {User}, I wanto to have an unique ID-Number for every entry for each collection so that I can distinguish each entry.
 ```
 
-![](images/use-case.png)
 
 ### Domain Design
 
