@@ -125,9 +125,9 @@ Spring Boot Framework
 
 Bächli Adina - adina.baechli@students.fhnw.ch: Front-End Developer
 
-Buga Kiril - kiril.buga@students.fhnw.ch: Back-End Developer and Front-End Developer
+Buga Kiril - kiril.buga@students.fhnw.ch: Full-Stack Developer
 
-Hoenen Leandro - leandro.hoenen@students.fhnw.ch: Back-End Developer and Front-End Developer
+Hoenen Leandro - leandro.hoenen@students.fhnw.ch: Full-Stack Developer
 
 Zaccariello Nicolai - nicolai.zaccariello@students.fhnw.ch: Front-End Developer
 
