@@ -83,9 +83,20 @@ As a {User}, I want to be able to save the entry for each collection with the ac
 As a {User}, I wanto to have an unique ID-Number for every entry for each collection so that I can distinguish each entry.
 ```
 
-##Domain-model
+![](images/use-case.png)
+
+### Domain Design
+
+The `ch.fhnw.acrm.data.domain` package contains the following domain objects / entities including getters and setters:
 
 ![](images/domain-model.png)
+
+### Business Logic Design
+
+The `ch.fhnw.acrm.business.service` package contains classes of the following business services:
+
+![](images/business-service.png)
+
 
 ## Mission / Initial Goal
 
