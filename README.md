@@ -27,7 +27,7 @@ As a {User}, I want to be able to the update the password of my account
 As a {User}, I want to be able to reset the password of my account in case my account was hacked or I forgot my password.
 ```
 
-##Customized Use Cases
+## Customized Use Cases
 ![](images/use-case.png)
 ```
 Login and Registration Use-Cases:
