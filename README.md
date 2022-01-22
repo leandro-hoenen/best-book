@@ -28,6 +28,7 @@ As a {User}, I want to be able to reset the password of my account in case my ac
 ```
 
 ##Customized Use Cases
+![](images/use-case.png)
 ```
 Login and Registration Use-Cases:
 
@@ -82,6 +83,9 @@ As a {User}, I want to be able to save the entry for each collection with the ac
 As a {User}, I wanto to have an unique ID-Number for every entry for each collection so that I can distinguish each entry.
 ```
 
+##Domain-model
+
+![](images/domain-model.png)
 
 ## Mission / Initial Goal
 
@@ -90,6 +94,10 @@ The initial goal of the website was to create and build an ecommerce platform th
 ## Problem Statement
 
 Because of the ambitious goal to build an ecommerce website, the development team severely undererstimated the back-end development as well as the seemless integration of the front-end part of the website. In order to successfully deploy the website project as well as maintaining the given deadline, the team decided to cut features of the website and focus on the essential part of the website with the ambition to add the features later on.
+
+## Further Notes
+
+In the code the class customer was not used. However, for the sake of simplicity, it was not deleted.
 
 ## Result
 
