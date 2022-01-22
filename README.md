@@ -1,206 +1,115 @@
-# A-CRM Web App
+# My Collection App
 
-This is a minimal CRM Web App (A-CRM - Insurance Agency CRM) as a template for students. 
+This website is published at mycollectionapp.herokuapp.com/login.
+(Initial website without the backend development bestbooks.ezknowapp.com)
 
-[![License](https://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
-[![Deploy to Heroku](https://img.shields.io/badge/deploy%20to-Heroku-6762a6.svg?longCache=true)](https://heroku.com/deploy)
+## Initial Use Cases
 
-> 🚧 **This is a template project**: Make sure that you adapt this documentation and the source code in this project according to your needs and use case.
-
-#### Contents:
-- [Analysis](#analysis)
-  - [Scenario](#scenario)
-  - [User Stories](#user-stories)
-  - [Use Case](#use-case)
-- [Design](#design)
-  - [Prototype Design](#prototype-design)
-  - [Domain Design](#domain-design)
-  - [Business Logic Design](#business-logic-design)
-  - [Endpoint Design](#endpoint-design)
-- [Implementation](#implementation)
-  - [Backend Technology](#backend-technology)
-  - [Frontend Technology](#frontend-technology)
-- [Deployment](#deployment)
-- [User Guide](#user-guide)
-- [Project Management](#project-management)
-  - [Roles](#roles)
-  - [Milestones](#milestones)
-
-## Analysis
-
-### Scenario
-
-A-CRM (Agency Customer-Relationship-Management) is the smallest possible and lightweight demonstration tool that allows agents to manage their customer data. Agents have an own access to their customer data.
-
-### User Stories
-1.	As an insurance agent, I want to have a Web app so that I can use it on different mobile devices and on desktop computers.
-2.	As an insurance agent, I want to see a consistent visual appearance so that I can navigate easily, and it looks consistent.
-3.	As an insurance agent, I want to use list views so that I can explore and read my business data.
-4.	As an insurance agent, I want to use edit and create views so that I can maintain my business data.
-5.	As an insurance agent, I want to create an account so that I can get access to the Web app.
-6.	As an insurance agent, I want to log-in so that I can authenticate myself.
-7.	As an insurance agent, I want to edit my profile so that my data is stored securely.
-
-### Use Case
-![](images/use-case.png)
-
-- UC-1 [Login on A-CRM]: Agents can log-in by entering an email address and password. As an extension, new agents my register first.
-- UC-2 [Register on A-CRM]: Agents can register to get an account (profile) to access the A-CRM system.
-- UC-3 [Edit a customer]: Agents can create, update and delete customers.
-- UC-4 [Show a customer list]: Agents can get an overview over their customers based on a customer list. As an extension they can create, update and delete customers (UC-3).
-
-## Design
-
-### Prototype Design
-
-A bootstrap based static prototype has been created by using a prototyping application. 
-
-In this case, the prototype application Bootstrap Studio has been used to create a basic user interface design based on an HTML grid, Bootstrap CSS and JavaScript, including the selection of web fonts and font-based icons.
-
-The assets (HTML, CSS, JavaScript, image and font files) has been exported and will be extended in the later during implementation with jQuery, to build a dynamic website.
-
-### Domain Design
-
-The `ch.fhnw.acrm.data.domain` package contains the following domain objects / entities including getters and setters:
-
-![](images/domain-model.png)
-
-### Business Logic Design
-
-The `ch.fhnw.acrm.business.service` package contains classes of the following business services:
-
-![](images/business-service.png)
-
-### Endpoint Design
-**Path**: [`/api/customer`](/api/customer) 
-
-**Method:** `POST`
-
-**Sample Request**  • *Header:* `Content-Type: application/json` • *Body:*
-
-```JSON
-{
-  "agent": {
-    "customers": [
-      null
-    ],
-    "email": "string",
-    "id": 0,
-    "name": "string",
-    "password": "string",
-    "remember": "string"
-  },
-  "email": "string",
-  "id": 0,
-  "mobile": "string",
-  "name": "string"
-}
+> Buyer
+```
+As a {User}, I want to have several filter options to search after the needed book. 
+As a {User}, I want to have an email from the seller so that I can contact the seller. 
+As a {User}, I want to see the most important key data of the book so that I can decide whether it is the right book or not.
 ```
 
-• *Optional:* `...`
-  
-**Success Response**  • *Code:* `200 OK` • *Sample Body:*
-
-```JSON
-{
-  "agent": {
-    "customers": [
-      null
-    ],
-    "email": "string",
-    "id": 0,
-    "name": "string",
-    "password": "string",
-    "remember": "string"
-  },
-  "email": "string",
-  "id": 0,
-  "mobile": "string",
-  "name": "string"
-}
+>Seller
+```
+As a {User}, I want to log-in to the website in order to create a listing of a used book. 
+As a {User}, I want to see the current and past listings.
 ```
 
-**Error Response** • *Code:* `404 NOT FOUND`
-
-## Implementation
-
-### Backend Technology
-This Web application is relying on [Spring Boot](https://projects.spring.io/spring-boot) and the following dependencies:
-
-- [Spring Boot](https://projects.spring.io/spring-boot)
-- [Spring Web](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html)
-- [Spring Data](https://projects.spring.io/spring-data)
-- [Java Persistence API (JPA)](http://www.oracle.com/technetwork/java/javaee/tech/persistence-jsp-140049.html)
-- [H2 Database Engine](https://www.h2database.com)
-- [PostgreSQL](https://www.postgresql.org)
-
-To bootstrap the application, the [Spring Initializr](https://start.spring.io/) has been used.
-
-Then the following further dependencies has been added to the project `pom.xml`:
-
-- Swagger and Swagger UI:
-```XML
-<dependency>
-    <groupId>io.springfox</groupId>
-    <artifactId>springfox-boot-starter</artifactId>
-    <version>3.0.0</version>
-</dependency>
+>Account Administration
+```
+As a {User}, I want to create an account so that I can access the website. 
+As a {User}, I want to be able to update the email_address of my account. 
+As a {User}, I want to be able to update the phone_number of my account. 
+As a {User}, I want to be able to the update the password of my account 
+As a {User}, I want to be able to reset the password of my account in case my account was hacked or I forgot my password.
 ```
 
-- Java HTML Parser and JWT:
-```XML
-<dependency>
-    <groupId>org.jsoup</groupId>
-    <artifactId>jsoup</artifactId>
-    <version>1.14.2</version>
-</dependency>
-<dependency>
-    <groupId>io.jsonwebtoken</groupId>
-    <artifactId>jjwt-api</artifactId>
-    <version>0.11.2</version>
-</dependency>
-<dependency>
-    <groupId>io.jsonwebtoken</groupId>
-    <artifactId>jjwt-impl</artifactId>
-    <version>0.11.2</version>
-    <scope>runtime</scope>
-</dependency>
-<dependency>
-    <groupId>io.jsonwebtoken</groupId>
-    <artifactId>jjwt-gson</artifactId>
-    <version>0.11.2</version>
-    <scope>runtime</scope>
-</dependency>
+##Customized Use Cases
+```
+Login and Registration Use-Cases:
+
+As a {User}, I want to register with my name, email address and a password so that I can create an account and enter the website.
+As a {User}, I want to login with my email address and a password so I can enter the website.
+
+
+Profile Use-Cases:
+
+As a {User}, I want to edit my profile so I can keep my account uptodated.
+As a {User}, I want to change my name to keep my account uptodated.
+As a {User}, I want to change my email address to keep my account uptodated.
+As a {User}, I want to change my password to keep my account uptodated.
+
+
+Log-out Use-Case:
+
+As a {User}, I want to be able to log-out so I can prevent third-party to make changes while my device is not locked.
+
+
+Video Games Collection Use-Cases:
+
+As a {User}, I want to be able to fill in the title of the video game so I can distinguish the title from other entries.
+As a {User}, I want to be able to fill in the developer of the video game so I can have more information about the video game.
+As a {User}, I want to be able to fill in the publisher of the video game so I can have more information about the video game.
+As a {User}, I want to be able to fill in a yes or no value to online multiplayer so I can have more information about the video game.
+As a {User}, I want to be able to fill in a yes or no value to local multiplayer so I can have more information about the video game.
+As a {User}, I want to be able to fill in the status of my video game entry so that I can retrieve the completeness of the video game entry.
+
+
+Movies Collection Use-Cases:
+
+As a {User}, I want to be able to fill in the title of the movies so I can distinguish the title from other entries.
+As a {User}, I want to be able to fill in the Genre of the movie so I can have more information about the movie.
+As a {User}, I want to be able to fill in the status of my movie entry so that I can retrieve the completeness of the movie entry.
+
+
+Books Collection Use-Cases:
+
+As a {User}, I want to be able to fill in the title of the books so I can distinguish the title from other entries.
+As a {User}, I want to be able to fill in the author of the book so I can have more information about the book.
+As a {User}, I want to be able to fill in a description of the book so I can have more information about the book.
+As a {User}, I want to be able to fill in the status of my book entry so that I can retrieve the completeness of the book entry.
+
+
+General Collection Use-Cases:
+
+As a {User}, I want to add an entry to each collection so I can list them at one place.
+As a {User}, I want to be able to edit all the information for each collection to keep them uptodated.
+As a {User}, I want to be able to delete my entry to keep each collection uptodated.
+As a {User}, I want to be able to save the entry for each collection with the according information to have them listed.
+As a {User}, I wanto to have an unique ID-Number for every entry for each collection so that I can distinguish each entry.
 ```
 
-### Frontend Technology
-This Web application is relying on the following frontend technology/libraries:
 
-- jQuery
-- Bootstrap
+## Mission / Initial Goal
 
-## Deployment
-This spring boot has been deployed to Heroku by using a pre-configuration scripts `app.json` and `Procfile`.
+The initial goal of the website was to create and build an ecommerce platform that mainly focuses on the buying and selling of used books related to school and/or university in the perspective of potential buyers and sellers. It should be a website where a potential buyer can use the simple interface of the website to browse the listings of books. A seller on the other hand should have the possibility to register and login to upload their books. The payment will happen outside of the website. The website will just work as a general marketplace with the mission to connect buyer and seller and is not liable.
 
-## User Guide
-The Web application can be accessed over the browser by using the following address: `https://***.herokuapp.com/`. And the Swagger-UI can be access using the specific page: `https://***.herokuapp.com/swagger-ui/`.
+## Problem Statement
 
-## Project Management
+Because of the ambitious goal to build an ecommerce website, the development team severely undererstimated the back-end development as well as the seemless integration of the front-end part of the website. In order to successfully deploy the website project as well as maintaining the given deadline, the team decided to cut features of the website and focus on the essential part of the website with the ambition to add the features later on.
 
-### Roles
-- All-rounder 😉: [Andreas Martin](https://andreasmartin.ch)
+## Result
 
-### Milestones
-1. **Analysis**: Scenario ideation, use case analysis and user story writing.
-2. **Prototype Design**: Creation of Bootstrap static web-design prototype.
-3. **Domain Design**: Definition of domain model.
-4. **Business Logic and API Design**: Definition of business logic and API.
-5. **Data and API Implementation**: Implementation of data access and business logic layers, and API.
-6. **Security and Frontend Implementation**: Integration of security framework and frontend realisation.
-7. **Deployment**: Deployment of Web application on cloud infrastructure.
+Instead of an ecommerce platform with users such as buyers and sellers the team build a website where users can create an account to enter the website and create a collection of their video games, movies and books. Furthermore, users can adjust each collection with the according delete, edit and add buttons. The website serves purely to manage the mentioned collection. With basic use-cases it is possible to expand the website to an ecommerce platform website in the future.
 
-#### Maintainer
-- [Andreas Martin](https://andreasmartin.ch)
+## Resources
 
-#### License
-- [Apache License, Version 2.0](blob/master/LICENSE)
+Materials from the Internet Technology Course
+Bootstrap
+Visual Studio Code
+Intelij IDEA IDE
+Spring Boot Framework
+
+## Author
+
+Bächli Adina - adina.baechli@students.fhnw.ch: Front-End Developer
+Buga Kiril - kiril.buga@students.fhnw.ch: Back-End Developer
+Hoenen Leandro - leandro.hoenen@students.fhnw.ch: Back-End Developer
+Zaccariello Nicolai - nicolai.zaccariello@students.fhnw.ch: Front-End Developer
+
+
+## License
+Copyright 2022. All rights reserved.
