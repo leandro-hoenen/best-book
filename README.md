@@ -84,13 +84,13 @@ As a {User}, I wanto to have an unique ID-Number for every entry for each collec
 ```
 
 
-### Domain Design
+## Domain Design
 
 The `ch.fhnw.acrm.data.domain` package contains the following domain objects / entities including getters and setters:
 
 ![](images/domain-model.png)
 
-### Business Logic Design
+## Business Logic Design
 
 The `ch.fhnw.acrm.business.service` package contains classes of the following business services:
 
